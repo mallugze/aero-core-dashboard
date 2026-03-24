@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AERO_CORE | Diagnostic Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#004c69",
+              "on-surface-variant": "#c6c6cd",
+              "on-secondary-fixed": "#111c2d",
+              "background": "#0c1324",
+              "error-container": "#93000a",
+              "primary": "#ffb874",
+              "on-surface": "#dce1fb",
+              "primary-fixed-dim": "#ffb874",
+              "on-primary-fixed": "#2d1600",
+              "on-primary-container": "#bd6d00",
+              "surface-container-lowest": "#070d1f",
+              "surface-variant": "#2e3447",
+              "surface-container": "#191f31",
+              "primary-container": "#271200",
+              "tertiary-fixed-dim": "#7bd0ff",
+              "on-primary": "#4b2800",
+              "outline-variant": "#45464d",
+              "surface-container-high": "#23293c",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#c4e7ff",
+              "inverse-on-surface": "#2a3043",
+              "on-tertiary-fixed": "#001e2c",
+              "surface": "#0c1324",
+              "on-secondary-fixed-variant": "#3c475a",
+              "on-secondary": "#263143",
+              "outline": "#909097",
+              "secondary-container": "#3e495d",
+              "on-primary-fixed-variant": "#6a3b00",
+              "secondary": "#bcc7de",
+              "surface-tint": "#ffb874",
+              "surface-container-low": "#151b2d",
+              "on-tertiary": "#00354a",
+              "surface-bright": "#33394c",
+              "primary-fixed": "#ffdcbf",
+              "tertiary-container": "#001a27",
+              "surface-dim": "#0c1324",
+              "surface-container-highest": "#2e3447",
+              "on-secondary-container": "#aeb9d0",
+              "on-tertiary-container": "#008abb",
+              "tertiary": "#7bd0ff",
+              "error": "#ffb4ab",
+              "on-error": "#690005",
+              "inverse-surface": "#dce1fb",
+              "inverse-primary": "#8c5000",
+              "on-background": "#dce1fb",
+              "secondary-fixed-dim": "#bcc7de",
+              "secondary-fixed": "#d8e3fb"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(25, 31, 49, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .orange-glow:hover {
+        box-shadow: 0 0 15px rgba(255, 184, 116, 0.2);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0c1324]/80 backdrop-blur-xl flex justify-between items-center px-8 h-20 w-full max-w-none shadow-[0_40px_40px_-15px_rgba(12,13,36,0.08)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ffb874] text-3xl" data-icon="flight_takeoff">flight_takeoff</span>
+<span class="text-2xl font-black tracking-tighter text-[#ffb874] uppercase font-['Space_Grotesk']">AERO_CORE</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-['Inter'] text-sm font-medium uppercase tracking-widest" href="#">Fleet Overview</a>
+<a class="text-[#ffb874] border-b-2 border-[#ffb874] pb-1 font-['Inter'] text-sm font-medium uppercase tracking-widest" href="#">Engine Telemetry</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-['Inter'] text-sm font-medium uppercase tracking-widest" href="#">Maintenance Logs</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-['Inter'] text-sm font-medium uppercase tracking-widest" href="#">System Health</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-all active:scale-95" data-icon="search">search</button>
+<div class="h-10 w-10 rounded-full border border-outline-variant/30 flex items-center justify-center overflow-hidden bg-surface-container">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsRJlCW7pYiDu7Egus6FiwbcbE-EFTtoGHZCrgzX_IzkF127OlmXjLZHv1VGWx9zm0vfda5EPGCU50Bj_TxgKwZ7IT4U3JBalpUpF9Bl-P1RIlXL4uIY7PlAO16bCqeb6lZ8lfhrzx1UsqP_UcF3zowu4hnGK3_XL_2mojH_6b_v6I5p1W7V3O4yYgAYUUe-Qc4Anfw6qxUZlY9sePVmEPolGjcTAKx_-YGpvnK11v-VZx-1YUPV_saDT6vBCYUVvNYPDBrcKN6C4"/>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
+<!-- Hero Header -->
+<section class="space-y-2">
+<p class="text-primary font-label text-sm tracking-[0.3em] uppercase">Predictive Intelligence Unit</p>
+<h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-white">Diagnostic Dashboard</h1>
+</section>
+<!-- Main Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Upload Area (Glassmorphic) -->
+<div class="lg:col-span-1 glass-card border-outline-variant/10 rounded-xl p-8 flex flex-col justify-between h-full">
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-xl font-bold text-white tracking-tight">Telemetry Input</h2>
+<span class="material-symbols-outlined text-primary" data-icon="upload_file">upload_file</span>
+</div>
+<div class="group relative cursor-pointer border-2 border-dashed border-outline-variant/30 rounded-lg p-12 text-center transition-all hover:bg-surface-bright/10 hover:border-primary/50">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-4xl text-outline" data-icon="cloud_upload">cloud_upload</span>
+<div class="space-y-1">
+<p class="text-sm font-medium text-on-surface">Drop engine logs here</p>
+<p class="text-xs text-outline">Supports .CSV, .JSON (Max 50MB)</p>
+</div>
+<button class="bg-primary hover:bg-on-primary-container text-on-primary px-6 py-2.5 rounded-md font-label text-sm font-bold uppercase tracking-wider transition-all active:scale-95">Browse Files</button>
+</div>
+</div>
+</div>
+<!-- Progress Bar (Visible state mockup) -->
+<div class="mt-8 space-y-3">
+<div class="flex justify-between text-xs font-label text-outline">
+<span>Uploading GEnx-1B_74.csv</span>
+<span>82%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[82%] rounded-full shadow-[0_0_8px_rgba(255,184,116,0.6)]"></div>
+</div>
+</div>
+</div>
+<!-- Visualization / Graphic Area -->
+<div class="lg:col-span-2 relative glass-card border-outline-variant/10 rounded-xl overflow-hidden min-h-[400px]">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="close-up of a high-tech aircraft turbine engine with glowing internal components and blueprint overlays in a dark hangar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb6jKsg95BFG5pHuAO5VXJepFI4cHABH0Df1vHp-u2zi1b73qpCh0oyNp6JoYG_h2JP1PlshxlnlfhM1LTQevvEV8jwa10CNovV4dRCYsaT3fbbPSpf2oYiMtvwllsiIMCZhvir-nVRPu-t0MWdazUS3bMg6Bu4hIr8lasNvx7WiP7mGDLJRzziXItznF9ewbuBCDUcVftSvwnrpE9Yc-5zlodJJ5y4bNCcMoWLe7QGwHaSal_Fc1b6jrO0hOEH5uqzSPW55cPYuU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="relative p-8 h-full flex flex-col justify-end">
+<div class="flex gap-4">
+<div class="bg-surface-container-high/80 backdrop-blur-md p-4 rounded-lg border border-outline-variant/10">
+<p class="text-xs text-outline font-label uppercase tracking-widest mb-1">Thrust Ratio</p>
+<p class="font-headline text-2xl font-bold text-primary">1.42 <span class="text-sm font-normal text-on-tertiary-container">EPR</span></p>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-md p-4 rounded-lg border border-outline-variant/10">
+<p class="text-xs text-outline font-label uppercase tracking-widest mb-1">Exhaust Gas Temp</p>
+<p class="font-headline text-2xl font-bold text-primary">942°C</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Result Cards -->
+<div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- RUL Metric -->
+<div class="glass-card border-outline-variant/10 rounded-xl p-8 flex flex-col gap-4 border-l-4 border-l-primary">
+<div class="flex justify-between items-start">
+<p class="text-xs text-outline font-label uppercase tracking-[0.2em]">Remaining Useful Life</p>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="hourglass_empty">hourglass_empty</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="font-headline text-7xl font-bold text-white tracking-tighter">142</h3>
+<p class="text-primary font-headline text-xl font-medium tracking-tight">CYCLES</p>
+</div>
+<div class="mt-auto flex items-center gap-2 text-xs text-success_green/80">
+<span class="material-symbols-outlined text-sm text-[#4ade80]" data-icon="trending_up">trending_up</span>
+<span class="text-[#4ade80]">+12 cycles vs. prev fleet avg</span>
+</div>
+</div>
+<!-- Status Indicator -->
+<div class="glass-card border-outline-variant/10 rounded-xl p-8 flex flex-col gap-6">
+<div class="flex justify-between items-start">
+<p class="text-xs text-outline font-label uppercase tracking-[0.2em]">Current Engine Status</p>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-error-container/20 border border-error-container/30">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
+<span class="text-[10px] font-bold text-error uppercase tracking-widest">Advisory</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center gap-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/10">
+<span class="text-sm text-on-surface-variant">Core Vibration</span>
+<span class="font-headline font-bold text-white">0.42 ips</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/10">
+<span class="text-sm text-on-surface-variant">Oil Pressure</span>
+<span class="font-headline font-bold text-white">64 psi</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-sm text-on-surface-variant">Fuel Flow</span>
+<span class="font-headline font-bold text-white">8,420 pph</span>
+</div>
+</div>
+</div>
+<!-- Recommendation Card -->
+<div class="glass-card border-outline-variant/10 rounded-xl p-8 flex flex-col gap-4 bg-gradient-to-br from-surface-container to-surface-container-low">
+<div class="flex justify-between items-start">
+<p class="text-xs text-outline font-label uppercase tracking-[0.2em]">Maintenance Action</p>
+<span class="material-symbols-outlined text-tertiary" data-icon="assignment_late">assignment_late</span>
+</div>
+<div class="space-y-4">
+<p class="text-xl font-headline font-bold text-white leading-tight">Schedule Stage 2 Blade Inspection within 48 flight hours.</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">Predictive model detects anomalous thermal variance in high-pressure turbine section. Early intervention recommended to avoid AOG status.</p>
+</div>
+<div class="mt-auto pt-4 flex gap-3">
+<button class="flex-1 bg-surface-container-high hover:bg-surface-bright text-white border border-outline-variant/30 py-2.5 rounded text-xs font-bold uppercase tracking-widest transition-all">View Full Log</button>
+<button class="flex-1 bg-tertiary-fixed-dim hover:bg-tertiary text-on-tertiary-fixed py-2.5 rounded text-xs font-bold uppercase tracking-widest transition-all">Approve Order</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- NavigationDrawer (Suppressed on specific pages as per mandate, but here as reference for shell) -->
+<aside class="hidden lg:flex fixed left-0 top-20 h-[calc(100vh-5rem)] w-64 flex-col py-6 bg-[#151b2d] border-r-0 z-40">
+<div class="px-6 mb-8">
+<span class="text-[#ffb874] font-['Inter'] text-xs font-medium uppercase tracking-[0.2em]">NAVIGATION</span>
+</div>
+<div class="flex flex-col gap-1 pr-4">
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-[#191f31] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Fleet Overview</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 bg-[#23293c] text-[#ffb874] rounded-r-full border-l-4 border-[#ffb874] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Engine Telemetry</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-[#191f31] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history_妥协">history</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">Maintenance Logs</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-[#191f31] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-['Inter'] text-sm font-medium uppercase tracking-widest">System Health</span>
+</a>
+</div>
+</aside>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-[#45464d]/15 bg-[#0c1324] mt-20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-12 gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ffb874]" data-icon="flight_takeoff">flight_takeoff</span>
+<p class="font-['Inter'] text-[10px] uppercase tracking-widest text-slate-500">© 2024 AERO_CORE PREDICTIVE SYSTEMS. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Documentation</a>
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Support</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0c1324]/90 backdrop-blur-xl border-t border-outline-variant/10 flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-[8px] uppercase tracking-tighter">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#ffb874]" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[8px] uppercase tracking-tighter">Diagnosis</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-[8px] uppercase tracking-tighter">Logs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[8px] uppercase tracking-tighter">Health</span>
+</a>
+</nav>
+</body></html>

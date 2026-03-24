@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "on-surface-variant": "#c6c6cd",
+                        "on-secondary-fixed": "#111c2d",
+                        "background": "#0c1324",
+                        "error-container": "#93000a",
+                        "primary": "#ffb874",
+                        "on-surface": "#dce1fb",
+                        "primary-fixed-dim": "#ffb874",
+                        "on-primary-fixed": "#2d1600",
+                        "on-primary-container": "#bd6d00",
+                        "surface-container-lowest": "#070d1f",
+                        "surface-variant": "#2e3447",
+                        "surface-container": "#191f31",
+                        "primary-container": "#271200",
+                        "tertiary-fixed-dim": "#7bd0ff",
+                        "on-primary": "#4b2800",
+                        "outline-variant": "#45464d",
+                        "surface-container-high": "#23293c",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#c4e7ff",
+                        "inverse-on-surface": "#2a3043",
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface": "#0c1324",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "on-secondary": "#263143",
+                        "outline": "#909097",
+                        "secondary-container": "#3e495d",
+                        "on-primary-fixed-variant": "#6a3b00",
+                        "secondary": "#bcc7de",
+                        "surface-tint": "#ffb874",
+                        "surface-container-low": "#151b2d",
+                        "on-tertiary": "#00354a",
+                        "surface-bright": "#33394c",
+                        "primary-fixed": "#ffdcbf",
+                        "tertiary-container": "#001a27",
+                        "surface-dim": "#0c1324",
+                        "surface-container-highest": "#2e3447",
+                        "on-secondary-container": "#aeb9d0",
+                        "on-tertiary-container": "#008abb",
+                        "tertiary": "#7bd0ff",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#8c5000",
+                        "on-background": "#dce1fb",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "secondary-fixed": "#d8e3fb"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(25, 31, 49, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .aviation-gradient {
+            background: linear-gradient(135deg, #ffb874 0%, #bd6d00 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0c1324]/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(12,19,36,0.08)] flex justify-between items-center px-8 h-20 w-full max-w-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ffb874] text-2xl" data-icon="flight_takeoff">flight_takeoff</span>
+<h1 class="text-2xl font-black tracking-tighter text-[#ffb874] uppercase font-['Space_Grotesk']">AERO_CORE</h1>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-['Inter'] text-sm font-medium uppercase tracking-widest" href="#">Fleet Overview</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-['Inter'] text-sm font-medium uppercase tracking-widest" href="#">Engine Telemetry</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-['Inter'] text-sm font-medium uppercase tracking-widest" href="#">System Health</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-surface-container-high border border-outline-variant/15 flex items-center justify-center overflow-hidden active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center pt-20 pb-12 relative overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px]"></div>
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, #45464d 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<!-- Login Container -->
+<div class="z-10 w-full max-w-md px-6">
+<div class="glass-card rounded-xl border border-outline-variant/10 p-8 md:p-10 shadow-2xl relative">
+<!-- Brand Accent Line -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 aviation-gradient rounded-b-full"></div>
+<div class="text-center mb-10">
+<h2 class="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">Access Portal</h2>
+<p class="text-on-surface-variant text-sm tracking-wide uppercase font-medium opacity-70">AERO_CORE PREDICTIVE MAINTENANCE</p>
+</div>
+<form method="POST" class="space-y-6">
+    {% csrf_token %}
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant ml-1" for="email">Terminal ID / Email</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg group-focus-within:text-primary transition-colors">alternate_email</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-md py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body text-sm" id="email" name="username" placeholder="name@aero-core.com" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-end ml-1">
+<label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant" for="password">Security Protocol / Password</label>
+<a class="text-[10px] font-bold uppercase tracking-widest text-tertiary hover:text-primary transition-colors" href="#">Recover</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-md py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body text-sm" id="password" name="password" placeholder="••••••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-lg cursor-pointer hover:text-on-surface transition-colors">visibility</span>
+</div>
+</div>
+<!-- Sign In Button -->
+<button class="w-full aviation-gradient text-on-primary font-headline font-bold py-4 rounded-md shadow-lg shadow-primary/10 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group mt-4" type="submit">
+<span>INITIATE SESSION</span>
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">login</span>
+</button>
+<!-- Auth Footer -->
+<div class="pt-6 border-t border-outline-variant/10 text-center">
+<p class="text-on-surface-variant text-sm">
+                            New operator? 
+                            <a class="text-primary font-bold hover:underline ml-1 underline-offset-4 decoration-primary/30" href="#">Request Credentials</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Technical Metadata Decor -->
+<div class="mt-8 flex justify-between px-2 text-[10px] font-mono text-outline/40 uppercase tracking-[0.3em]">
+<span>AUTH_V4.2.0</span>
+<span>SECURE_LINK_ESTABLISHED</span>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-[#45464d]/15 bg-[#0c1324] flex flex-col md:flex-row justify-between items-center px-12 gap-8">
+<div class="text-slate-500 font-['Inter'] text-[10px] uppercase tracking-widest">
+            © 2024 AERO_CORE PREDICTIVE SYSTEMS. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Documentation</a>
+<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Support</a>
+</div>
+<div class="font-bold text-[#ffb874] font-['Space_Grotesk'] text-xs tracking-widest uppercase">
+            AERO_CORE // HQ
+        </div>
+</footer>
+</body></html>
