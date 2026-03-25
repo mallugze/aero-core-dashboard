@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#33394c",
+              "on-tertiary-container": "#008abb",
+              "secondary": "#bcc7de",
+              "tertiary-fixed": "#c4e7ff",
+              "surface-container-lowest": "#070d1f",
+              "primary-fixed": "#ffdcbf",
+              "on-surface-variant": "#c6c6cd",
+              "primary": "#ffb874",
+              "inverse-primary": "#8c5000",
+              "surface-container-low": "#151b2d",
+              "on-secondary-fixed": "#111c2d",
+              "on-secondary": "#263143",
+              "surface-tint": "#ffb874",
+              "inverse-surface": "#dce1fb",
+              "surface-container-highest": "#2e3447",
+              "tertiary": "#7bd0ff",
+              "surface-dim": "#0c1324",
+              "surface-container": "#191f31",
+              "primary-container": "#271200",
+              "on-primary-container": "#bd6d00",
+              "on-surface": "#dce1fb",
+              "primary-fixed-dim": "#ffb874",
+              "surface-variant": "#2e3447",
+              "on-background": "#dce1fb",
+              "tertiary-container": "#001a27",
+              "on-secondary-fixed-variant": "#3c475a",
+              "on-primary": "#4b2800",
+              "error": "#ffb4ab",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#6a3b00",
+              "error-container": "#93000a",
+              "inverse-on-surface": "#2a3043",
+              "outline": "#909097",
+              "secondary-fixed-dim": "#bcc7de",
+              "outline-variant": "#45464d",
+              "on-primary-fixed": "#2d1600",
+              "surface-container-high": "#23293c",
+              "background": "#0c1324",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#001e2c",
+              "secondary-container": "#3e495d"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(46, 52, 71, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0c1324]/80 backdrop-blur-xl shadow-[0_40px_40px_0_rgba(12,19,36,0.08)] flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ffb874]" data-icon="flight_takeoff">flight_takeoff</span>
+<h1 class="text-xl font-black text-[#ffb874] italic tracking-tighter font-headline">THE COCKPIT HORIZON</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20 bg-surface-container-high">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="professional portrait of an aircraft maintenance engineer in a clean blue uniform with short dark hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVSe6zvuMCf7lrQ9PiExBO6Av3uClRdFTH3AVdb0MMe2xiTMJ16Ve9gjFjSMHmA8JpKhN_DoueJPzwy2cuLd9lJLEw0Vsun6fCPLXal0eHWpVH6sz-XXur_KjoQiIQV4RGm0EHngkxhRvsx_TDh-obv6RA20SswUJ89YZq5d5IA50g74woF-vNlxemVvtwI3BENgOdv6tn7cv0s3NaGXANxIiHUdjB96TaNKztbENI0_3UJ-XR0v1KUCQj2OFG-M73XNh6KSx_cpE"/>
+</div>
+</header>
+<main class="flex-grow pt-20 pb-28 px-4 md:px-8 max-w-7xl mx-auto w-full">
+<!-- Global Fleet Map Section -->
+<section class="mt-4 mb-8 relative rounded-xl overflow-hidden h-[300px] shadow-2xl group">
+<div class="absolute inset-0 bg-surface-container-lowest">
+<img class="w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="stylized dark technical world map with glowing light blue flight paths and grid lines, night vision aesthetic" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6Rd1P5aZ3hEIayB3x4Kz96tYg3oIojzngrpxYyhocRmWqCHIgLPWOOZjeq60-3-SZd5MLMbOyumdmDRM7JsFmfgNQg1qroDeLFVdbtQT_M3lwAoWUg-j1_nsQPuJl12lpvb-yeuh6gy0AuBar2IeklqSDZ7EI03Gdl77jBq2nJFXd4XYjTTfbEagqY0O40OWSHpIF-gmyyzSpKpC49BiRFtAsaTUMTTfKYp3SuF88JfTvMeUzUann32aR-R9-MbquHOBiKMO5raw"/>
+</div>
+<!-- Map Overlay UI -->
+<div class="absolute inset-0 p-4 pointer-events-none">
+<div class="flex flex-col h-full justify-between">
+<div class="flex justify-between items-start">
+<div class="glass-panel px-3 py-1.5 rounded-lg pointer-events-auto border border-white/5 shadow-lg">
+<span class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] font-headline">Global Telemetry</span>
+</div>
+</div>
+<!-- Aircraft Icons on Map -->
+<div class="absolute top-[20%] left-[25%] pointer-events-auto">
+<span class="material-symbols-outlined text-green-400 drop-shadow-[0_0_8px_rgba(74,222,128,0.5)] cursor-pointer hover:scale-125 transition-transform" data-icon="flight">flight</span>
+</div>
+<div class="absolute top-[45%] left-[60%] pointer-events-auto">
+<span class="material-symbols-outlined text-green-400 drop-shadow-[0_0_8px_rgba(74,222,128,0.5)] cursor-pointer hover:scale-125 transition-transform" data-icon="flight">flight</span>
+</div>
+<div class="absolute top-[65%] left-[40%] pointer-events-auto">
+<span class="material-symbols-outlined text-primary drop-shadow-[0_0_8px_rgba(255,184,116,0.5)] cursor-pointer hover:scale-125 transition-transform" data-icon="flight">flight</span>
+</div>
+<div class="absolute top-[35%] left-[80%] pointer-events-auto">
+<span class="material-symbols-outlined text-error drop-shadow-[0_0_12px_rgba(255,180,171,0.6)] cursor-pointer hover:scale-150 transition-transform scale-110" data-icon="flight">flight</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Fleet Status Summary -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest font-headline">Total Engines</span>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold font-headline tracking-tight text-on-surface">142</span>
+<span class="material-symbols-outlined text-tertiary/40" data-icon="dns">dns</span>
+</div>
+</div>
+<div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold text-green-400 uppercase tracking-widest font-headline">Healthy</span>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold font-headline tracking-tight text-green-400">128</span>
+<span class="material-symbols-outlined text-green-400/40" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest font-headline">Warning</span>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold font-headline tracking-tight text-primary">12</span>
+<span class="material-symbols-outlined text-primary/40" data-icon="warning">warning</span>
+</div>
+</div>
+<div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
+<span class="text-[10px] font-bold text-error uppercase tracking-widest font-headline">Critical</span>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold font-headline tracking-tight text-error">2</span>
+<span class="material-symbols-outlined text-error/40" data-icon="report">report</span>
+</div>
+</div>
+</div>
+<!-- Search & Filter Area -->
+<div class="flex flex-col gap-4 mb-6">
+<div class="relative w-full">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary/50 transition-all font-body" placeholder="Search by Tail Number or Model..." type="text"/>
+</div>
+</div>
+<!-- Aircraft List -->
+<div class="space-y-4">
+<!-- Item 1: Critical -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-error shadow-md">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-xl font-bold font-headline text-on-surface">N123AF</h3>
+<span class="bg-error/10 text-error text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Immediate Inspection</span>
+</div>
+<p class="text-sm text-on-surface-variant font-body">GEnx-1B • <span class="text-secondary">London Heathrow (LHR)</span></p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
+<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
+<span class="text-error">12 Flight Cycles</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full w-[8%] shadow-[0_0_8px_rgba(255,180,171,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- Item 2: Warning -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-primary shadow-md">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-xl font-bold font-headline text-on-surface">N458DL</h3>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Degradation Detected</span>
+</div>
+<p class="text-sm text-on-surface-variant font-body">GEnx-1B • <span class="text-secondary">John F. Kennedy (JFK)</span></p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
+<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
+<span class="text-primary">84 Flight Cycles</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[35%] shadow-[0_0_8px_rgba(255,184,116,0.3)]"></div>
+</div>
+</div>
+</div>
+<!-- Item 3: Healthy -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-green-500/30 shadow-md">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-xl font-bold font-headline text-on-surface">N902UA</h3>
+<span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Optimal Status</span>
+</div>
+<p class="text-sm text-on-surface-variant font-body">GEnx-2B • <span class="text-secondary">In Flight (ATL-CDG)</span></p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
+<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
+<span class="text-green-400">420 Flight Cycles</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-green-400 rounded-full w-[82%] shadow-[0_0_8px_rgba(74,222,128,0.2)]"></div>
+</div>
+</div>
+</div>
+<!-- Item 4: Healthy -->
+<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-green-500/30 shadow-md">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-xl font-bold font-headline text-on-surface">N773AA</h3>
+<span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Optimal Status</span>
+</div>
+<p class="text-sm text-on-surface-variant font-body">Trent XWB • <span class="text-secondary">Tokyo Haneda (HND)</span></p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
+<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
+<span class="text-green-400">512 Flight Cycles</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-green-400 rounded-full w-[95%]"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center pb-6 pt-3 px-4 bg-[#2e3447]/60 backdrop-blur-lg border-t border-[#45464d]/15 shadow-2xl z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-[#ffb874]/10 text-[#ffb874] rounded-xl px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined filled-icon" data-icon="hub">hub</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Fleet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-[#ffb874] transition-all active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-[#ffb874] transition-all active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Health</span>
+</a>
+</nav>
+<!-- Contextual FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-full bg-gradient-to-br from-[#ffb874] to-[#bd6d00] flex items-center justify-center shadow-2xl text-[#4b2800] active:scale-95 duration-200 z-40">
+<span class="material-symbols-outlined font-bold" data-icon="add">add</span>
+</button>
+</body></html>

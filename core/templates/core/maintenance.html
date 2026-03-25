@@ -1,0 +1,262 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Logs | THE COCKPIT HORIZON</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#33394c",
+              "on-tertiary-container": "#008abb",
+              "secondary": "#bcc7de",
+              "tertiary-fixed": "#c4e7ff",
+              "surface-container-lowest": "#070d1f",
+              "primary-fixed": "#ffdcbf",
+              "on-surface-variant": "#c6c6cd",
+              "primary": "#ffb874",
+              "inverse-primary": "#8c5000",
+              "surface-container-low": "#151b2d",
+              "on-secondary-fixed": "#111c2d",
+              "on-secondary": "#263143",
+              "surface-tint": "#ffb874",
+              "inverse-surface": "#dce1fb",
+              "surface-container-highest": "#2e3447",
+              "tertiary": "#7bd0ff",
+              "surface-dim": "#0c1324",
+              "surface-container": "#191f31",
+              "primary-container": "#271200",
+              "on-primary-container": "#bd6d00",
+              "on-surface": "#dce1fb",
+              "primary-fixed-dim": "#ffb874",
+              "surface-variant": "#2e3447",
+              "on-background": "#dce1fb",
+              "tertiary-container": "#001a27",
+              "on-secondary-fixed-variant": "#3c475a",
+              "on-primary": "#4b2800",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed-variant": "#004c69",
+              "on-tertiary": "#00354a",
+              "tertiary-fixed-dim": "#7bd0ff",
+              "secondary-fixed": "#d8e3fb",
+              "on-secondary-container": "#aeb9d0",
+              "surface": "#0c1324",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#6a3b00",
+              "error-container": "#93000a",
+              "inverse-on-surface": "#2a3043",
+              "outline": "#909097",
+              "secondary-fixed-dim": "#bcc7de",
+              "outline-variant": "#45464d",
+              "on-primary-fixed": "#2d1600",
+              "surface-container-high": "#23293c",
+              "background": "#0c1324",
+              "on-error": "#690005",
+              "on-tertiary-fixed": "#001e2c",
+              "secondary-container": "#3e495d"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(46, 52, 71, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0c1324]/80 backdrop-blur-xl shadow-[0_40px_40px_0_rgba(12,19,36,0.08)] flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ffb874] text-2xl">flight_takeoff</span>
+<h1 class="font-['Space_Grotesk'] font-black text-xl text-[#ffb874] italic tracking-tighter">THE COCKPIT HORIZON</h1>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant/30 overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="professional portrait of an aircraft technician in a dark blue uniform with engineering badges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKbUWmHaIkJjx1YfqYlFBqq3tgIDfjEWeCCXNaJAvLXp5WzpJWxBCtTPJLCcsqdN_SAJG5ZfKmXUdeWSOYjD1ZGir7PloTmcHJwsaqvUlv_azQclr3elmdWTTeab74vlv00G1zEV8ijp11ff-bzXVRev2y4lC0pmElOASl2IpByD2ilOHkjOnA0Apu0WF46VYBBawydAIVS5MUf0C1wHOJcwHcXJ1VJqw2jybyaconEyWA9UgKps0RdIW2mbdQ1bUN_ZQQWcbXWLY"/>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-2xl mx-auto">
+<!-- Filter Bar -->
+<section class="mb-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-lg font-bold tracking-tight text-on-surface">Telemetry Filter</h2>
+<span class="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Operational View</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="bg-surface-container-low p-3 rounded-lg flex flex-col items-start gap-1 hover:bg-surface-bright transition-colors active:scale-95 duration-200 group">
+<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Date Range</span>
+<div class="flex items-center gap-1 text-on-surface text-sm font-medium">
+<span class="material-symbols-outlined text-xs text-primary">calendar_today</span>
+<span>Last 7D</span>
+</div>
+</button>
+<button class="bg-surface-container-low p-3 rounded-lg flex flex-col items-start gap-1 hover:bg-surface-bright transition-colors active:scale-95 duration-200 group">
+<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Engine ID</span>
+<div class="flex items-center gap-1 text-on-surface text-sm font-medium">
+<span class="material-symbols-outlined text-xs text-primary">settings_slow_motion</span>
+<span>GEnx-1B</span>
+</div>
+</button>
+<button class="bg-surface-container-low p-3 rounded-lg flex flex-col items-start gap-1 hover:bg-surface-bright transition-colors active:scale-95 duration-200 group">
+<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Status</span>
+<div class="flex items-center gap-1 text-on-surface text-sm font-medium">
+<span class="material-symbols-outlined text-xs text-primary">filter_list</span>
+<span>All</span>
+</div>
+</button>
+</div>
+</div>
+</section>
+<!-- Timeline -->
+<section class="relative">
+<!-- Central Line -->
+<div class="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/40 via-surface-container-highest to-transparent"></div>
+<div class="space-y-10 relative">
+<!-- Event 1: Anomaly -->
+<article class="flex gap-6 group">
+<div class="relative z-10">
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center shadow-[0_0_15px_rgba(147,0,10,0.4)]">
+<span class="material-symbols-outlined text-on-error-container text-lg" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="glass-panel p-5 rounded-xl border border-outline-variant/10 group-hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start mb-3">
+<div>
+<span class="text-xs font-headline font-bold text-error uppercase tracking-widest">Anomaly Detected</span>
+<h3 class="text-on-surface font-semibold text-base mt-1">Vibration Spike - Stage 2</h3>
+</div>
+<span class="text-[10px] font-mono text-slate-500 bg-surface-container-lowest px-2 py-1 rounded">14:22 UTC</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Engine ID</span>
+<span class="text-sm font-headline text-on-surface-variant">NX-4902-B</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Technician</span>
+<span class="text-sm font-headline text-on-surface-variant">K. Arisaka</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest/50 py-2.5 rounded text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                                ANALYZE DATA
+                                <span class="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-transform">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Event 2: Replacement -->
+<article class="flex gap-6 group">
+<div class="relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">published_with_changes</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="glass-panel p-5 rounded-xl border border-outline-variant/10 group-hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start mb-3">
+<div>
+<span class="text-xs font-headline font-bold text-tertiary uppercase tracking-widest">Part Replacement</span>
+<h3 class="text-on-surface font-semibold text-base mt-1">Fuel Nozzle Assembly</h3>
+</div>
+<span class="text-[10px] font-mono text-slate-500 bg-surface-container-lowest px-2 py-1 rounded">OCT 24, 09:15</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Engine ID</span>
+<span class="text-sm font-headline text-on-surface-variant">NX-4881-A</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Technician</span>
+<span class="text-sm font-headline text-on-surface-variant">M. Chen</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest/50 py-2.5 rounded text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300 flex items-center justify-center gap-2">
+                                VIEW LOG DETAILS
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Event 3: Inspection -->
+<article class="flex gap-6 group">
+<div class="relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="glass-panel p-5 rounded-xl border border-outline-variant/10 group-hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start mb-3">
+<div>
+<span class="text-xs font-headline font-bold text-on-surface-variant uppercase tracking-widest">Routine Inspection</span>
+<h3 class="text-on-surface font-semibold text-base mt-1">Pre-Flight Certification</h3>
+</div>
+<span class="text-[10px] font-mono text-slate-500 bg-surface-container-lowest px-2 py-1 rounded">OCT 23, 18:40</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Engine ID</span>
+<span class="text-sm font-headline text-on-surface-variant">NX-4902-B</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Technician</span>
+<span class="text-sm font-headline text-on-surface-variant">J. Varga</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest/50 py-2.5 rounded text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300 flex items-center justify-center gap-2">
+                                VIEW LOG DETAILS
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center pb-6 pt-3 px-4 bg-[#2e3447]/60 backdrop-blur-lg shadow-2xl z-50 rounded-t-xl border-t border-[#45464d]/15">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-[#ffb874] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Fleet</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#ffb874]/10 text-[#ffb874] rounded-xl px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-[#ffb874] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Health</span>
+</a>
+</nav>
+<!-- Floating Action Button: Contextual Add Log -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-gradient-to-br from-[#ffb874] to-[#bd6d00] rounded-full shadow-[0_10px_30px_rgba(255,184,116,0.3)] flex items-center justify-center text-on-primary active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 600;">add</span>
+</button>
+</body></html>
