@@ -133,7 +133,21 @@
 <p class="text-sm font-medium text-on-surface">Drop engine logs here</p>
 <p class="text-xs text-outline">Supports .CSV, .JSON (Max 50MB)</p>
 </div>
-<button class="bg-primary hover:bg-on-primary-container text-on-primary px-6 py-2.5 rounded-md font-label text-sm font-bold uppercase tracking-wider transition-all active:scale-95">Browse Files</button>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="file" name="file" required id="file-upload" style="display:none;"
+        onchange="document.getElementById('file-name').textContent = this.files[0]?.name || 'No file chosen'">
+
+    <label for="file-upload"
+        class="bg-primary px-6 py-2 rounded cursor-pointer">
+        Browse Files
+    </label>
+
+    <p id="file-name">No file chosen</p>
+
+    <button type="submit">Predict RUL</button>
+</form>
 </div>
 </div>
 </div>
