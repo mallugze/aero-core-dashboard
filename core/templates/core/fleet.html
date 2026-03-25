@@ -131,28 +131,28 @@
 <div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
 <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest font-headline">Total Engines</span>
 <div class="flex items-end justify-between">
-<span class="text-4xl font-bold font-headline tracking-tight text-on-surface">142</span>
+<span class="text-4xl font-bold font-headline tracking-tight text-on-surface">1</span>
 <span class="material-symbols-outlined text-tertiary/40" data-icon="dns">dns</span>
 </div>
 </div>
 <div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
 <span class="text-[10px] font-bold text-green-400 uppercase tracking-widest font-headline">Healthy</span>
 <div class="flex items-end justify-between">
-<span class="text-4xl font-bold font-headline tracking-tight text-green-400">128</span>
+<span class="text-4xl font-bold font-headline tracking-tight text-green-400">{% if health == "Good" %}1{% else %}0{% endif %}</span>
 <span class="material-symbols-outlined text-green-400/40" data-icon="check_circle">check_circle</span>
 </div>
 </div>
 <div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
 <span class="text-[10px] font-bold text-primary uppercase tracking-widest font-headline">Warning</span>
 <div class="flex items-end justify-between">
-<span class="text-4xl font-bold font-headline tracking-tight text-primary">12</span>
+<span class="text-4xl font-bold font-headline tracking-tight text-primary">{% if health == "Warning" %}1{% else %}0{% endif %}</span>
 <span class="material-symbols-outlined text-primary/40" data-icon="warning">warning</span>
 </div>
 </div>
 <div class="bg-surface-container p-5 rounded-xl border border-white/5 shadow-lg flex flex-col justify-between h-32">
 <span class="text-[10px] font-bold text-error uppercase tracking-widest font-headline">Critical</span>
 <div class="flex items-end justify-between">
-<span class="text-4xl font-bold font-headline tracking-tight text-error">2</span>
+<span class="text-4xl font-bold font-headline tracking-tight text-error">{% if health == "Critical" %}1{% else %}0{% endif %}</span>
 <span class="material-symbols-outlined text-error/40" data-icon="report">report</span>
 </div>
 </div>
@@ -166,94 +166,48 @@
 </div>
 <!-- Aircraft List -->
 <div class="space-y-4">
-<!-- Item 1: Critical -->
-<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-error shadow-md">
-<div class="flex justify-between items-start mb-4">
-<div>
-<div class="flex items-center gap-2">
-<h3 class="text-xl font-bold font-headline text-on-surface">N123AF</h3>
-<span class="bg-error/10 text-error text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Immediate Inspection</span>
-</div>
-<p class="text-sm text-on-surface-variant font-body">GEnx-1B • <span class="text-secondary">London Heathrow (LHR)</span></p>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
-</div>
-<div class="space-y-1.5">
-<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
-<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
-<span class="text-error">12 Flight Cycles</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-error rounded-full w-[8%] shadow-[0_0_8px_rgba(255,180,171,0.5)]"></div>
-</div>
-</div>
-</div>
-<!-- Item 2: Warning -->
-<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-primary shadow-md">
-<div class="flex justify-between items-start mb-4">
-<div>
-<div class="flex items-center gap-2">
-<h3 class="text-xl font-bold font-headline text-on-surface">N458DL</h3>
-<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Degradation Detected</span>
-</div>
-<p class="text-sm text-on-surface-variant font-body">GEnx-1B • <span class="text-secondary">John F. Kennedy (JFK)</span></p>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
-</div>
-<div class="space-y-1.5">
-<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
-<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
-<span class="text-primary">84 Flight Cycles</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary rounded-full w-[35%] shadow-[0_0_8px_rgba(255,184,116,0.3)]"></div>
-</div>
-</div>
-</div>
-<!-- Item 3: Healthy -->
-<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-green-500/30 shadow-md">
-<div class="flex justify-between items-start mb-4">
-<div>
-<div class="flex items-center gap-2">
-<h3 class="text-xl font-bold font-headline text-on-surface">N902UA</h3>
-<span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Optimal Status</span>
-</div>
-<p class="text-sm text-on-surface-variant font-body">GEnx-2B • <span class="text-secondary">In Flight (ATL-CDG)</span></p>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
-</div>
-<div class="space-y-1.5">
-<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
-<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
-<span class="text-green-400">420 Flight Cycles</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-green-400 rounded-full w-[82%] shadow-[0_0_8px_rgba(74,222,128,0.2)]"></div>
-</div>
-</div>
-</div>
-<!-- Item 4: Healthy -->
-<div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 border-green-500/30 shadow-md">
-<div class="flex justify-between items-start mb-4">
-<div>
-<div class="flex items-center gap-2">
-<h3 class="text-xl font-bold font-headline text-on-surface">N773AA</h3>
-<span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter">Optimal Status</span>
-</div>
-<p class="text-sm text-on-surface-variant font-body">Trent XWB • <span class="text-secondary">Tokyo Haneda (HND)</span></p>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
-</div>
-<div class="space-y-1.5">
-<div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
-<span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
-<span class="text-green-400">512 Flight Cycles</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-green-400 rounded-full w-[95%]"></div>
-</div>
-</div>
-</div>
+
+    <div class="bg-surface-container-low hover:bg-surface-container transition-colors p-5 rounded-xl border-l-4 shadow-md"
+         style="border-color: {{ color }}">
+
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <div class="flex items-center gap-2">
+
+                    <h3 class="text-xl font-bold font-headline text-on-surface">
+                        ENGINE-01
+                    </h3>
+
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-tighter"
+                          style="background-color: {{ color }}20; color: {{ color }};">
+                        {{ health }}
+                    </span>
+
+                </div>
+
+                <p class="text-sm text-on-surface-variant font-body">
+                    AI Engine Model • <span class="text-secondary">Live System</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="space-y-1.5">
+            <div class="flex justify-between text-[11px] font-bold font-headline uppercase tracking-wider">
+                <span class="text-on-surface-variant">Remaining Useful Life (RUL)</span>
+                <span style="color: {{ color }}">
+                    {{ cycles }} Cycles
+                </span>
+            </div>
+
+            <div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                <div class="h-full rounded-full"
+                     style="width: {{ cycles }}%; background-color: {{ color }}">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 </main>
 

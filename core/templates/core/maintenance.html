@@ -101,132 +101,90 @@
 </div>
 </header>
 <main class="pt-24 pb-32 px-4 max-w-2xl mx-auto">
-<!-- Filter Bar -->
-<section class="mb-8">
-<div class="flex flex-col gap-4">
-<div class="flex items-center justify-between">
-<h2 class="font-headline text-lg font-bold tracking-tight text-on-surface">Telemetry Filter</h2>
-<span class="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Operational View</span>
-</div>
-<div class="grid grid-cols-3 gap-2">
-<button class="bg-surface-container-low p-3 rounded-lg flex flex-col items-start gap-1 hover:bg-surface-bright transition-colors active:scale-95 duration-200 group">
-<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Date Range</span>
-<div class="flex items-center gap-1 text-on-surface text-sm font-medium">
-<span class="material-symbols-outlined text-xs text-primary">calendar_today</span>
-<span>Last 7D</span>
-</div>
-</button>
-<button class="bg-surface-container-low p-3 rounded-lg flex flex-col items-start gap-1 hover:bg-surface-bright transition-colors active:scale-95 duration-200 group">
-<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Engine ID</span>
-<div class="flex items-center gap-1 text-on-surface text-sm font-medium">
-<span class="material-symbols-outlined text-xs text-primary">settings_slow_motion</span>
-<span>GEnx-1B</span>
-</div>
-</button>
-<button class="bg-surface-container-low p-3 rounded-lg flex flex-col items-start gap-1 hover:bg-surface-bright transition-colors active:scale-95 duration-200 group">
-<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Status</span>
-<div class="flex items-center gap-1 text-on-surface text-sm font-medium">
-<span class="material-symbols-outlined text-xs text-primary">filter_list</span>
-<span>All</span>
-</div>
-</button>
-</div>
-</div>
-</section>
+
 <!-- Timeline -->
 <section class="relative">
 <!-- Central Line -->
 <div class="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/40 via-surface-container-highest to-transparent"></div>
 <div class="space-y-10 relative">
-<!-- Event 1: Anomaly -->
 <article class="flex gap-6 group">
-<div class="relative z-10">
-<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center shadow-[0_0_15px_rgba(147,0,10,0.4)]">
-<span class="material-symbols-outlined text-on-error-container text-lg" style="font-variation-settings: 'FILL' 1;">warning</span>
-</div>
-</div>
-<div class="flex-1">
-<div class="glass-panel p-5 rounded-xl border border-outline-variant/10 group-hover:bg-surface-container-high transition-all duration-300">
-<div class="flex justify-between items-start mb-3">
-<div>
-<span class="text-xs font-headline font-bold text-error uppercase tracking-widest">Anomaly Detected</span>
-<h3 class="text-on-surface font-semibold text-base mt-1">Vibration Spike - Stage 2</h3>
-</div>
-<span class="text-[10px] font-mono text-slate-500 bg-surface-container-lowest px-2 py-1 rounded">14:22 UTC</span>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-4">
-<div class="flex flex-col">
-<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Engine ID</span>
-<span class="text-sm font-headline text-on-surface-variant">NX-4902-B</span>
-</div>
-<div class="flex flex-col">
-<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Technician</span>
-<span class="text-sm font-headline text-on-surface-variant">K. Arisaka</span>
-</div>
-</div>
 
-</div>
-</div>
-</article>
-<!-- Event 2: Replacement -->
-<article class="flex gap-6 group">
-<div class="relative z-10">
-<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center ring-4 ring-surface">
-<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">published_with_changes</span>
-</div>
-</div>
-<div class="flex-1">
-<div class="glass-panel p-5 rounded-xl border border-outline-variant/10 group-hover:bg-surface-container-high transition-all duration-300">
-<div class="flex justify-between items-start mb-3">
-<div>
-<span class="text-xs font-headline font-bold text-tertiary uppercase tracking-widest">Part Replacement</span>
-<h3 class="text-on-surface font-semibold text-base mt-1">Fuel Nozzle Assembly</h3>
-</div>
-<span class="text-[10px] font-mono text-slate-500 bg-surface-container-lowest px-2 py-1 rounded">OCT 24, 09:15</span>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-4">
-<div class="flex flex-col">
-<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Engine ID</span>
-<span class="text-sm font-headline text-on-surface-variant">NX-4881-A</span>
-</div>
-<div class="flex flex-col">
-<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Technician</span>
-<span class="text-sm font-headline text-on-surface-variant">M. Chen</span>
-</div>
-</div>
+    <!-- Icon -->
+    <div class="relative z-10">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center"
+             style="background-color: {{ color }}20; box-shadow: 0 0 10px {{ color }};">
+            <span class="material-symbols-outlined text-lg"
+                  style="color: {{ color }};">warning</span>
+        </div>
+    </div>
 
-</div>
-</div>
-</article>
-<!-- Event 3: Inspection -->
-<article class="flex gap-6 group">
-<div class="relative z-10">
-<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center ring-4 ring-surface">
-<span class="material-symbols-outlined text-on-surface-variant text-lg" style="font-variation-settings: 'FILL' 1;">fact_check</span>
-</div>
-</div>
-<div class="flex-1">
-<div class="glass-panel p-5 rounded-xl border border-outline-variant/10 group-hover:bg-surface-container-high transition-all duration-300">
-<div class="flex justify-between items-start mb-3">
-<div>
-<span class="text-xs font-headline font-bold text-on-surface-variant uppercase tracking-widest">Routine Inspection</span>
-<h3 class="text-on-surface font-semibold text-base mt-1">Pre-Flight Certification</h3>
-</div>
-<span class="text-[10px] font-mono text-slate-500 bg-surface-container-lowest px-2 py-1 rounded">OCT 23, 18:40</span>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-4">
-<div class="flex flex-col">
-<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Engine ID</span>
-<span class="text-sm font-headline text-on-surface-variant">NX-4902-B</span>
-</div>
-<div class="flex flex-col">
-<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Technician</span>
-<span class="text-sm font-headline text-on-surface-variant">J. Varga</span>
-</div>
-</div>
+    <!-- Content -->
+    <div class="flex-1">
+        <div class="glass-panel p-5 rounded-xl border border-outline-variant/10">
 
-</div>
-</div>
+            <div class="flex justify-between items-start mb-3">
+                <div>
+
+                    <!-- Title -->
+                    <span class="text-xs font-headline font-bold uppercase tracking-widest"
+                          style="color: {{ color }}">
+                        AI Diagnosis
+                    </span>
+
+                    <!-- Main Issue -->
+                    <h3 class="text-on-surface font-semibold text-base mt-1">
+                        {% if health == "Critical" %}
+                            Immediate Maintenance Required
+                        {% elif health == "Warning" %}
+                            Performance Degradation Detected
+                        {% else %}
+                            System Operating Normally
+                        {% endif %}
+                    </h3>
+
+                </div>
+
+                <!-- Time -->
+                <span class="text-[10px] font-mono text-slate-500">
+                    LIVE
+                </span>
+            </div>
+
+            <!-- Details -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-slate-500 uppercase font-bold">
+                        Engine ID
+                    </span>
+                    <span class="text-sm font-headline text-on-surface-variant">
+                        ENGINE-01
+                    </span>
+                </div>
+
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-slate-500 uppercase font-bold">
+                        Status
+                    </span>
+                    <span class="text-sm font-headline"
+                          style="color: {{ color }}">
+                        {{ health }}
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Metrics -->
+            <div class="text-xs text-on-surface-variant space-y-1">
+                <p>RUL: <span style="color: {{ color }}">{{ cycles }}</span> cycles</p>
+                <p>Vibration: {{ vibration }} ips</p>
+                <p>Pressure: {{ pressure }} psi</p>
+                <p>Fuel Flow: {{ fuel_flow }} pph</p>
+            </div>
+
+        </div>
+    </div>
+
 </article>
 </div>
 </section>
