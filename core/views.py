@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from .utils import predict   # ✅ correct import
+from .utils import predict   # ML function
 
-# GLOBAL VARIABLE (for now - simple approach)
+# GLOBAL VARIABLE (temporary storage)
 latest_data = {}
 
 
@@ -33,11 +33,26 @@ def dashboard(request):
 
         if file:
             result = predict(file)
-
             print("Prediction:", result)
 
-            # 🔥 STORE DATA FOR ALL PAGES
-            latest_data = result
+            # 🔥 BUILD FULL DATA OBJECT
+            latest_data = {
+                "cycles": result,
+                "health": "Good" if result > 100 else "Warning" if result > 50 else "Critical",
+                "vibration": round(0.2 + (150 - result) * 0.002, 2),
+                "pressure": 60 + (result % 10),
+                "fuel_flow": 8000 + (result * 10),
+            }
+
+            # 🎨 ADD COLOR BASED ON HEALTH
+            status = latest_data["health"]
+
+            if status == "Good":
+                latest_data["color"] = "#4ade80"   # green
+            elif status == "Warning":
+                latest_data["color"] = "#facc15"   # yellow
+            else:
+                latest_data["color"] = "#ef4444"   # red
 
     return render(request, "core/dashboard.html", latest_data)
 
