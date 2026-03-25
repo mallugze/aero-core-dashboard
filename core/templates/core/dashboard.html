@@ -114,49 +114,64 @@
 </section>
 <!-- Main Bento Grid -->
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<!-- Upload Area (Glassmorphic) -->
-<div class="lg:col-span-1 glass-card border-outline-variant/10 rounded-xl p-8 flex flex-col justify-between h-full">
-<div class="space-y-6">
-<div class="flex items-center justify-between">
-<h2 class="font-headline text-xl font-bold text-white tracking-tight">Telemetry Input</h2>
-<span class="material-symbols-outlined text-primary" data-icon="upload_file">upload_file</span>
-</div>
-<div class="group relative cursor-pointer border-2 border-dashed border-outline-variant/30 rounded-lg p-12 text-center transition-all hover:bg-surface-bright/10 hover:border-primary/50">
-<div class="space-y-4">
-<span class="material-symbols-outlined text-4xl text-outline" data-icon="cloud_upload">cloud_upload</span>
-<div class="space-y-1">
-<p class="text-sm font-medium text-on-surface">Drop engine logs here</p>
-<p class="text-xs text-outline">Supports .CSV, .JSON (Max 50MB)</p>
-</div>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+<!-- ================= UPLOAD PANEL ================= -->
+<div class="lg:col-span-1 glass-card border border-outline-variant/10 rounded-xl p-6 flex flex-col justify-between h-full">
 
-    <input type="file" name="file" required id="file-upload" style="display:none;"
-        onchange="document.getElementById('file-name').textContent = this.files[0]?.name || 'No file chosen'">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="font-headline text-lg font-semibold text-white tracking-wide">
+            Telemetry Input
+        </h2>
+        <span class="material-symbols-outlined text-primary text-2xl">
+            upload_file
+        </span>
+    </div>
 
-    <label for="file-upload"
-        class="bg-primary px-6 py-2 rounded cursor-pointer">
-        Browse Files
-    </label>
+    <!-- Upload Form -->
+    <form action="/ml/predict/" method="POST" enctype="multipart/form-data"
+          class="flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 rounded-lg p-8 transition-all hover:border-primary/60 hover:bg-white/5">
 
-    <p id="file-name">No file chosen</p>
+        {% csrf_token %}
 
-    <button type="submit">Predict RUL</button>
-</form>
+        <!-- Icon -->
+        <span class="material-symbols-outlined text-4xl text-outline mb-3">
+            cloud_upload
+        </span>
+
+        <!-- Text -->
+        <p class="text-sm text-gray-300 font-medium">
+            Drop engine logs here
+        </p>
+        <p class="text-xs text-gray-500 mb-4">
+            Supports CSV (Max 50MB)
+        </p>
+
+        <!-- Hidden Input -->
+        <input type="file" name="file" required id="file-upload"
+               class="hidden"
+               onchange="document.getElementById('file-name').textContent = this.files[0]?.name || 'No file selected'">
+
+        <!-- Browse Button -->
+        <label for="file-upload"
+               class="bg-primary text-black text-sm px-5 py-2 rounded-md cursor-pointer hover:bg-primary/80 transition">
+            Browse File
+        </label>
+
+        <!-- File Name -->
+        <p id="file-name" class="text-xs text-gray-400 mt-3">
+            No file selected
+        </p>
+
+        <!-- Submit Button -->
+        <button type="submit"
+                class="mt-4 w-full bg-gradient-to-r from-primary to-yellow-400 text-black font-semibold py-2 rounded-md hover:opacity-90 transition">
+            Run Prediction
+        </button>
+
+    </form>
+
 </div>
-</div>
-</div>
-<!-- Progress Bar (Visible state mockup) -->
-<div class="mt-8 space-y-3">
-<div class="flex justify-between text-xs font-label text-outline">
-<span>Uploading GEnx-1B_74.csv</span>
-<span>82%</span>
-</div>
-<div class="h-1 w-full bg-surface-container-lowest rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[82%] rounded-full shadow-[0_0_8px_rgba(255,184,116,0.6)]"></div>
-</div>
-</div>
-</div>
+
 <!-- Visualization / Graphic Area -->
 <div class="lg:col-span-2 relative glass-card border-outline-variant/10 rounded-xl overflow-hidden min-h-[400px]">
 <img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="close-up of a high-tech aircraft turbine engine with glowing internal components and blueprint overlays in a dark hangar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb6jKsg95BFG5pHuAO5VXJepFI4cHABH0Df1vHp-u2zi1b73qpCh0oyNp6JoYG_h2JP1PlshxlnlfhM1LTQevvEV8jwa10CNovV4dRCYsaT3fbbPSpf2oYiMtvwllsiIMCZhvir-nVRPu-t0MWdazUS3bMg6Bu4hIr8lasNvx7WiP7mGDLJRzziXItznF9ewbuBCDUcVftSvwnrpE9Yc-5zlodJJ5y4bNCcMoWLe7QGwHaSal_Fc1b6jrO0hOEH5uqzSPW55cPYuU"/>
@@ -184,9 +199,9 @@
 </div>
 <div class="flex items-baseline gap-2">
 <h3 class="font-headline text-7xl font-bold text-white tracking-tighter">
-    {{ rul|default:"142" }}
+    {{ cycles|default:"--"  }} 
 </h3>
-<p style="color:red;">DEBUG RUL: {{ rul }}</p>
+
 <p class="text-primary font-headline text-xl font-medium tracking-tight">CYCLES</p>
 </div>
 <div class="mt-auto flex items-center gap-2 text-xs text-success_green/80">
@@ -200,21 +215,30 @@
 <p class="text-xs text-outline font-label uppercase tracking-[0.2em]">Current Engine Status</p>
 <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-error-container/20 border border-error-container/30">
 <div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
-<span class="text-[10px] font-bold text-error uppercase tracking-widest">Advisory</span>
+<span class="text-[10px] font-bold uppercase tracking-widest"
+      style="color: {{ color }}">
+    {{ health|default:"--" }}
+</span>
 </div>
 </div>
 <div class="flex-1 flex flex-col justify-center gap-4">
 <div class="flex justify-between items-center py-2 border-b border-outline-variant/10">
 <span class="text-sm text-on-surface-variant">Core Vibration</span>
-<span class="font-headline font-bold text-white">0.42 ips</span>
+<span class="font-headline font-bold text-white">
+    {{ vibration|default:"--" }} ips
+</span>
 </div>
 <div class="flex justify-between items-center py-2 border-b border-outline-variant/10">
 <span class="text-sm text-on-surface-variant">Oil Pressure</span>
-<span class="font-headline font-bold text-white">64 psi</span>
+<span class="font-headline font-bold text-white">
+    {{ pressure|default:"--" }} psi
+</span>
 </div>
 <div class="flex justify-between items-center py-2">
 <span class="text-sm text-on-surface-variant">Fuel Flow</span>
-<span class="font-headline font-bold text-white">8,420 pph</span>
+<span class="font-headline font-bold text-white">
+    {{ fuel_flow|default:"--" }} pph
+</span>
 </div>
 </div>
 </div>
