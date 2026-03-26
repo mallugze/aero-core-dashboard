@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AERO_MAINTENANCE | Request Credentials</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#271200",
+              "on-secondary-fixed-variant": "#3c475a",
+              "tertiary-fixed": "#c4e7ff",
+              "inverse-surface": "#dce1fb",
+              "on-primary": "#4b2800",
+              "surface-dim": "#0c1324",
+              "secondary": "#bcc7de",
+              "on-secondary-fixed": "#111c2d",
+              "surface-container": "#191f31",
+              "on-primary-fixed": "#2d1600",
+              "surface-container-lowest": "#070d1f",
+              "primary-fixed-dim": "#ffb874",
+              "inverse-primary": "#8c5000",
+              "tertiary-container": "#001a27",
+              "outline": "#909097",
+              "on-tertiary": "#00354a",
+              "on-surface": "#dce1fb",
+              "on-tertiary-container": "#008abb",
+              "surface-container-highest": "#2e3447",
+              "surface-container-low": "#151b2d",
+              "tertiary-fixed-dim": "#7bd0ff",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#33394c",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#001e2c",
+              "secondary-container": "#3e495d",
+              "on-surface-variant": "#c6c6cd",
+              "on-error": "#690005",
+              "secondary-fixed-dim": "#bcc7de",
+              "inverse-on-surface": "#2a3043",
+              "primary": "#ffb874",
+              "on-secondary": "#263143",
+              "on-primary-container": "#bd6d00",
+              "surface-container-high": "#23293c",
+              "error": "#ffb4ab",
+              "tertiary": "#7bd0ff",
+              "surface-tint": "#ffb874",
+              "on-background": "#dce1fb",
+              "surface-variant": "#2e3447",
+              "on-secondary-container": "#aeb9d0",
+              "surface": "#0c1324",
+              "background": "#0c1324",
+              "secondary-fixed": "#d8e3fb",
+              "primary-fixed": "#ffdcbf",
+              "outline-variant": "#45464d",
+              "on-tertiary-fixed-variant": "#004c69",
+              "on-primary-fixed-variant": "#6a3b00"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    display: inline-block;
+    line-height: 1
+    }
+.glass-panel {
+    background: rgba(25, 31, 49, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px)
+    }
+.bg-hangar {
+    background-image: linear-gradient(rgba(12, 19, 36, 0.85), rgba(12, 19, 36, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuB-H3az7ra8fHFhX7-zJatvjhrFRl32J5W7ImWrlIrGb-g_H6Eb3uiMIWNFHVuzoAobtGwK9gBtH0SiCCusu0Qujkwb1zg4dUZuhS0iccW8N3sxcq1mPVowBmGHhPhF1EMM6s3Wrt_lFjTjQWm4cBD_A7QkqvoDalq8tIKYSNOzDRFt1C0bP3FvnYfgpMTFOv-joUdUBvnLt-_MlPxQzIrzMd4AznBkoxDnboKXsSu6gwkuBbWQUQpsDDG_xvdngeZhVX9-TT2zSY4);
+    background-size: cover;
+    background-position: center
+    }
+input:focus, select:focus {
+    box-shadow: 0 0 0 1px #ffb874, 0 0 8px rgba(255, 184, 116, 0.3)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex items-center justify-center bg-hangar" data-alt="Dark futuristic aircraft hangar with blue ambient lighting and a high-tech jet engine silhouette in soft focus background">
+<!-- Top Bar Component -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 w-full bg-[#0c1324]/60 backdrop-blur-lg shadow-2xl shadow-[#070d1f]/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ffb874]" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+<h1 class="text-[#ffb874] font-['Space_Grotesk'] font-black tracking-tighter text-xl">AERO_MAINTENANCE</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<span class="font-['Space_Grotesk'] font-bold tracking-widest uppercase text-[#45464d] cursor-not-allowed">Fleet</span>
+<span class="font-['Space_Grotesk'] font-bold tracking-widest uppercase text-[#45464d] cursor-not-allowed">Analytics</span>
+<span class="font-['Space_Grotesk'] font-bold tracking-widest uppercase text-[#45464d] cursor-not-allowed">Sensors</span>
+</div>
+</header>
+<main class="w-full max-w-lg px-4 pt-20 pb-12">
+<div class="glass-panel rounded-xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
+<!-- Decorative Accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-container-highest mb-6 shadow-inner">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 0;">admin_panel_settings</span>
+</div>
+<h2 class="font-headline text-3xl font-bold text-on-background tracking-tight mb-2 uppercase">Request Credentials</h2>
+<p class="text-on-surface-variant font-body text-sm tracking-wide">Secure Access Terminal • Maintenance Protocol</p>
+</div>
+<form method="POST" class="space-y-5">
+  {% csrf_token %}
+<!-- Full Name -->
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-outline ml-1">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg">person</span>
+<input 
+  type="text" 
+  name="name"
+  class="w-full bg-surface-container-lowest border-none rounded-lg py-3.5 pl-12 pr-4 text-on-surface placeholder:text-on-secondary-fixed-variant focus:ring-1 focus:ring-primary transition-all font-body text-sm" 
+  placeholder="Commander John Doe"
+/>
+</div>
+</div>
+<!-- Email Address -->
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-outline ml-1">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg">alternate_email</span>
+<input 
+  type="email" 
+  name="email"
+  class="w-full bg-surface-container-lowest border-none rounded-lg py-3.5 pl-12 pr-4 text-on-surface placeholder:text-on-secondary-fixed-variant focus:ring-1 focus:ring-primary transition-all font-body text-sm" 
+  placeholder="j.doe@aerospace.corp"
+/>
+</div>
+</div>
+<!-- Role Dropdown -->
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-outline ml-1">System Role</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg">badge</span>
+<select  name="role" class="w-full bg-surface-container-lowest border-none rounded-lg py-3.5 pl-12 pr-4 text-on-surface focus:ring-1 focus:ring-primary appearance-none transition-all font-body text-sm">
+<option value="operator">Operator</option>
+<option value="engineer">Engineer</option>
+<option value="admin">Administrator</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Password Fields Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-outline ml-1">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg">lock</span>
+<input 
+  type="password" 
+  name="password"
+  class="w-full bg-surface-container-lowest border-none rounded-lg py-3.5 pl-12 pr-4 text-on-surface placeholder:text-on-secondary-fixed-variant focus:ring-1 focus:ring-primary transition-all font-body text-sm" 
+  placeholder="••••••••"
+/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-outline ml-1">Confirm</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg">verified_user</span>
+<input 
+  type="password" 
+  name="confirm_password"
+  class="w-full bg-surface-container-lowest border-none rounded-lg py-3.5 pl-12 pr-4 text-on-surface placeholder:text-on-secondary-fixed-variant focus:ring-1 focus:ring-primary transition-all font-body text-sm" 
+  placeholder="••••••••"
+/>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-6 space-y-4">
+<button class="w-full bg-gradient-to-br from-primary to-on-primary-container text-on-primary font-headline font-bold py-4 rounded-lg tracking-widest hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/20 uppercase text-sm" type="submit">
+                        REQUEST ACCESS
+                    </button>
+<button class="w-full border border-outline-variant border-opacity-20 text-primary font-headline font-semibold py-3.5 rounded-lg tracking-widest hover:bg-surface-bright/10 transition-all uppercase text-xs flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                        BACK TO LOGIN
+                    </button>
+</div>
+</form>
+<div class="mt-8 text-center">
+<p class="text-[10px] font-medium text-outline-variant uppercase tracking-[0.15em] leading-relaxed">
+                    Submit your request. Admin approval required. <br/>
+<span class="opacity-50">Pending validation usually takes 2-4 hours.</span>
+</p>
+</div>
+</div>
+<!-- System Status Footer -->
+<div class="mt-12 flex justify-between items-center opacity-40 px-2">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-headline tracking-tighter uppercase font-bold">SYSTEMS NOMINAL</span>
+</div>
+<div class="text-[10px] font-headline tracking-widest uppercase font-bold">
+                LATENCY: 14MS
+            </div>
+</div>
+</main>
+<!-- Suppressed Nav Shells as per focused task instruction -->
+</body></html>

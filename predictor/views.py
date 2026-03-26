@@ -1,8 +1,19 @@
 import pandas as pd
 import random
-from django.shortcuts import render
-from .ml import predict
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.views.decorators.http import require_POST
+
+from .ml import predict
+from .models import CustomUser
+
+
+# =========================
+# DASHBOARD + ML PREDICTION
+# =========================
+@login_required
 def upload_predict(request):
     context = {}
 
@@ -16,7 +27,6 @@ def upload_predict(request):
         engine_name = f"{random.choice(engine_models)}-{engine_id}"
 
         # ===== ML PREDICTION =====
-        # Drop unwanted columns (example)
         selected_columns = df.columns[2:19]
         data = df[selected_columns].values
         cycles = int(predict(data))
@@ -58,3 +68,53 @@ def upload_predict(request):
         }
 
     return render(request, 'core/dashboard.html', context)
+
+
+# =========================
+# CUSTOM ADMIN PANEL
+# =========================
+@login_required
+def admin_panel(request):
+    if not request.user.is_superuser:
+        return redirect("upload_predict")  # redirect to dashboard
+
+    users = CustomUser.objects.filter(is_approved=False)
+    pending_count = users.count()
+
+    return render(request, "core/admin_panel.html", {
+        "users": users,
+        "pending_count": pending_count
+    })
+
+
+# =========================
+# APPROVE USER
+# =========================
+@require_POST
+@login_required
+def approve_user(request, user_id):
+    if not request.user.is_superuser:
+        return redirect("upload_predict")
+
+    user = get_object_or_404(CustomUser, id=user_id)
+    user.is_approved = True
+    user.save()
+
+    messages.success(request, f"{user.username} approved successfully")
+    return redirect("admin_panel")
+
+
+# =========================
+# REJECT USER
+# =========================
+@require_POST
+@login_required
+def reject_user(request, user_id):
+    if not request.user.is_superuser:
+        return redirect("upload_predict")
+
+    user = get_object_or_404(CustomUser, id=user_id)
+    user.delete()  # or mark rejected instead
+
+    messages.error(request, f"{user.username} rejected")
+    return redirect("admin_panel")

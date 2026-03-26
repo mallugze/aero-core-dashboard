@@ -39,3 +39,15 @@ def predict(file):
 
     # Step 5: return last prediction
     return int(prediction[-1][0])
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+class CustomUser(AbstractUser):
+    ROLE_CHOICES = [
+        ('operator', 'Operator'),
+        ('engineer', 'Engineer'),
+        ('admin', 'Administrator'),
+    ]
+
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='operator')
+    is_approved = models.BooleanField(default=False)
