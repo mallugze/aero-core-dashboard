@@ -130,3 +130,13 @@ STATICFILES_DIRS = [
 ]
 AUTH_USER_MODEL = 'predictor.CustomUser'
 LOGIN_URL = 'login'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mallikarjunpx@gmail.com'
+EMAIL_HOST_PASSWORD = 'mbbo unck qlaj jodh' # Generate a "App Password" in Google settings
+DEFAULT_FROM_EMAIL = 'AERO_CORE System <mallikarjunpx@gmail.com>'

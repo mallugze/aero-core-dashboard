@@ -1,5 +1,4 @@
 /* ================= HERO SECTION ================= */
-
 .hero {
   position: relative;
   height: 100vh;
@@ -7,9 +6,14 @@
   display: flex;
   align-items: center;
   padding-left: 80px;
-  overflow: hidden; /* IMPORTANT */
-}
+  overflow: hidden;
 
+  /* REMOVE the linear-gradient to clear the overlay */
+  background-image: url("../images/plane.jpg"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /* REMOVE ANY OVERLAY COMPLETELY */
 .overlay,

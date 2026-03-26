@@ -106,6 +106,16 @@
     </header>
 
     <main class="relative z-10 h-screen w-full flex items-center justify-center px-6">
+        <div id="success-popup" style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+            <div class="glass-card border border-primary/30 p-8 rounded-xl text-center max-w-sm mx-4 shadow-[0_0_50px_rgba(255,184,116,0.2)]">
+        <span class="material-symbols-outlined text-primary text-5xl mb-4">check_circle</span>
+        <h3 class="font-headline text-xl font-bold text-white uppercase tracking-tighter mb-2">Request Transmitted</h3>
+        <p class="text-slate-400 text-xs leading-relaxed mb-6">Your credentials are now in the queue for Admin validation. System response expected within 2-4 hours.</p>
+        <button onclick="document.getElementById('success-popup').style.display='none'" class="w-full aviation-gradient text-[#2d1600] font-bold py-2 rounded uppercase text-[10px] tracking-widest hover:brightness-110 transition-all">
+            Dismiss
+        </button>
+            </div>
+        </div>
         <div class="w-full max-w-md">
             <div class="glass-card rounded-xl border border-white/10 p-8 md:p-10 shadow-2xl relative">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 aviation-gradient rounded-b-full"></div>
@@ -140,6 +150,15 @@
                         <span>INITIATE SESSION</span>
                         <span class="material-symbols-outlined">login</span>
                     </button>
+                    <div class="mt-8 pt-6 border-t border-white/5 text-center">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">
+                            New to the System?
+                        </p>
+                        <a href="{% url 'request_access' %}" class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors text-xs font-bold uppercase tracking-widest border border-primary/20 px-6 py-3 rounded-md hover:bg-primary/10 w-full justify-center">
+                            <span>Request Access Credentials</span>
+                            <span class="material-symbols-outlined text-sm">person_add</span>
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -149,5 +168,18 @@
         <div>© 2024 AERO_CORE PREDICTIVE SYSTEMS</div>
         <div class="text-[#ffb874] font-bold">AERO_CORE // HQ</div>
     </footer>
+<script>
+    // This looks for the success message sent from views.py after redirect
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                const popup = document.getElementById('success-popup');
+                if (popup) {
+                    popup.style.display = 'flex';
+                }
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</script>
 </body>
 </html>

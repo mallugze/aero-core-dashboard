@@ -1,284 +1,182 @@
 {% load static %}
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-tertiary-fixed-variant": "#004c69",
-              "tertiary": "#7bd0ff",
-              "surface-bright": "#33394c",
-              "background": "#0c1324",
-              "on-tertiary": "#00354a",
-              "on-primary-fixed-variant": "#6a3b00",
-              "on-tertiary-fixed": "#001e2c",
-              "on-secondary-container": "#aeb9d0",
-              "on-primary-fixed": "#2d1600",
-              "inverse-on-surface": "#2a3043",
-              "surface-container": "#191f31",
-              "tertiary-container": "#001a27",
-              "on-tertiary-container": "#008abb",
-              "on-secondary-fixed": "#111c2d",
-              "surface-container-low": "#151b2d",
-              "outline-variant": "#45464d",
-              "secondary-fixed": "#d8e3fb",
-              "inverse-surface": "#dce1fb",
-              "on-secondary-fixed-variant": "#3c475a",
-              "on-primary-container": "#bd6d00",
-              "surface": "#0c1324",
-              "error": "#ffb4ab",
-              "surface-container-high": "#23293c",
-              "secondary-fixed-dim": "#bcc7de",
-              "primary-fixed": "#ffdcbf",
-              "surface-variant": "#2e3447",
-              "primary": "#ffb874",
-              "secondary-container": "#3e495d",
-              "primary-container": "#271200",
-              "surface-container-highest": "#2e3447",
-              "on-error-container": "#ffdad6",
-              "inverse-primary": "#8c5000",
-              "surface-tint": "#ffb874",
-              "on-secondary": "#263143",
-              "outline": "#909097",
-              "on-surface": "#dce1fb",
-              "on-primary": "#4b2800",
-              "tertiary-fixed": "#c4e7ff",
-              "surface-dim": "#0c1324",
-              "secondary": "#bcc7de",
-              "surface-container-lowest": "#070d1f",
-              "on-surface-variant": "#c6c6cd",
-              "on-error": "#690005",
-              "on-background": "#dce1fb",
-              "primary-fixed-dim": "#ffb874",
-              "error-container": "#93000a",
-              "tertiary-fixed-dim": "#7bd0ff"
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#0c1324",
+                        "surface": "#0c1324",
+                        "primary": "#ffb874",
+                        "on-surface": "#dce1fb",
+                        "surface-container-high": "#23293c",
+                        "surface-container-highest": "#2e3447",
+                        "tertiary": "#7bd0ff",
+                        "tertiary-container": "#001a27",
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                    },
+                },
             },
-            fontFamily: {
-              "headline": ["Space Grotesk"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-          },
-        },
-      }
+        }
     </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-        .glass-panel {
-            background: rgba(21, 27, 45, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-        .pulse-effect {
-            box-shadow: 0 0 0 0 rgba(255, 184, 116, 0.4);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 184, 116, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 184, 116, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 184, 116, 0); }
-        }
-        .zebra-list > div:nth-child(even) {
-            background-color: rgba(35, 41, 60, 0.3);
-        }
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .glass-panel { background: rgba(21, 27, 45, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .pulse-effect { box-shadow: 0 0 0 0 rgba(255, 184, 116, 0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 184, 116, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 184, 116, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 184, 116, 0); } }
+        .zebra-list > div:nth-child(even) { background-color: rgba(35, 41, 60, 0.3); }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+</head>
 <body class="bg-background text-on-background font-body min-h-screen flex flex-col">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-[#0c1324]/80 backdrop-blur-xl border-b border-slate-800/50 shadow-[0_4px_20px_rgba(12,19,36,0.08)] flex items-center justify-between px-8 py-4 w-full">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-orange-400 text-2xl" data-icon="rocket_launch">rocket_launch</span>
-<span class="font-['Space_Grotesk'] uppercase tracking-widest text-2xl font-bold text-orange-400 tracking-tighter">AERO_MAINTENANCE</span>
-</div>
-<div class="hidden md:flex items-center gap-8">
-<nav class="flex gap-6">
-<a class="font-['Space_Grotesk'] uppercase tracking-widest text-slate-400 hover:text-slate-200 transition-colors" href="#">Fleet Status</a>
-<a class="font-['Space_Grotesk'] uppercase tracking-widest text-orange-400 border-b-2 border-orange-400 pb-1" href="#">Access Requests</a>
-<a class="font-['Space_Grotesk'] uppercase tracking-widest text-slate-400 hover:text-slate-200 transition-colors" href="#">Engine Telemetry</a>
-</nav>
-<button class="bg-orange-400/10 text-orange-400 px-4 py-1.5 rounded-sm border border-orange-400/20 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:bg-orange-400/20 transition-all active:scale-95">
-                ADMIN PANEL
+
+<header class="fixed top-0 w-full z-50 bg-[#0c1324]/80 backdrop-blur-xl border-b border-slate-800/50 flex items-center justify-between px-8 py-4">
+    <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-orange-400 text-2xl">rocket_launch</span>
+        <span class="font-['Space_Grotesk'] uppercase tracking-widest text-2xl font-bold text-orange-400">AERO_MAINTENANCE</span>
+    </div>
+    
+    <div class="hidden md:flex items-center gap-8">
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="bg-red-500/10 text-red-400 px-4 py-1.5 rounded-sm border border-red-500/20 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:bg-red-500/20 transition-all active:scale-95">
+                SIGN OUT
             </button>
-</div>
+        </form>
+    </div>
 </header>
-<!-- Navigation Drawer (Sidebar) -->
-<aside class="h-screen w-64 fixed left-0 top-0 bg-[#151b2d] border-r border-slate-800/30 flex flex-col h-full py-6 z-40 hidden lg:flex">
-<div class="px-6 mb-10 pt-20">
-<div class="flex items-center gap-3 mb-6">
-<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-orange-400/30">
-<img alt="Super Admin Avatar" class="w-full h-full object-cover" data-alt="close up portrait of a senior aerospace commander in a dark navy technical uniform with orange insignia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkLNadPxifGqOrVyivuXY0aG8UHA1_b6_66LtQ2d2X6uesmGp0W9r-cDbeB07sFmRDdBPhwYHle0RqWz-EGkyPQ40TVWof-9YjxpuTZfstzEnBcHvlPFbeDuZJ_udsJbpXdMvIflbCmw4k_yaVUp7JEVphOEuXoJny2AHctzNE1OVxfjMhAM3tjHkHRzzpqHGpbkU1TMhNAnaAsOQbogF_5sRE7Pj3GGAifDiySn80wnUtSO-vtSWDFUoZNF0m0F48-tabv70b1_g"/>
-</div>
-<div>
-<p class="text-orange-400 font-bold font-['Inter'] text-sm">Commander</p>
-<p class="text-slate-500 text-[10px] uppercase tracking-tighter">Super Admin</p>
-</div>
-</div>
-</div>
-<nav class="flex flex-col gap-1">
-<div class="px-6 py-3 flex items-center gap-4 text-slate-400 hover:bg-slate-800/50 hover:translate-x-1 transition-transform cursor-pointer transition-all">
-<span class="material-symbols-outlined" data-icon="aerostat">air</span>
-<span class="font-['Inter'] font-medium text-sm">Fleet Status</span>
-</div>
-<div class="px-6 py-3 flex items-center gap-4 bg-orange-400/10 text-orange-400 border-r-4 border-orange-400 hover:translate-x-1 transition-transform cursor-pointer transition-all">
-<span class="material-symbols-outlined" data-icon="person_add_alt">person_add_alt</span>
-<span class="font-['Inter'] font-medium text-sm">Access Requests</span>
-</div>
-<div class="px-6 py-3 flex items-center gap-4 text-slate-400 hover:bg-slate-800/50 hover:translate-x-1 transition-transform cursor-pointer transition-all">
-<span class="material-symbols-outlined" data-icon="speed">speed</span>
-<span class="font-['Inter'] font-medium text-sm">Engine Telemetry</span>
-</div>
-<div class="px-6 py-3 flex items-center gap-4 text-slate-400 hover:bg-slate-800/50 hover:translate-x-1 transition-transform cursor-pointer transition-all">
-<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
-<span class="font-['Inter'] font-medium text-sm">System Logs</span>
-</div>
-</nav>
+
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#151b2d] border-r border-slate-800/30 flex flex-col py-6 z-40 hidden lg:flex">
+    <div class="px-6 mb-10 pt-20">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-orange-400/30">
+                <img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkLNadPxifGqOrVyivuXY0aG8UHA1_b6_66LtQ2d2X6uesmGp0W9r-cDbeB07sFmRDdBPhwYHle0RqWz-EGkyPQ40TVWof-9YjxpuTZfstzEnBcHvlPFbeDuZJ_udsJbpXdMvIflbCmw4k_yaVUp7JEVphOEuXoJny2AHctzNE1OVxfjMhAM3tjHkHRzzpqHGpbkU1TMhNAnaAsOQbogF_5sRE7Pj3GGAifDiySn80wnUtSO-vtSWDFUoZNF0m0F48-tabv70b1_g"/>
+            </div>
+            <div>
+                <p class="text-orange-400 font-bold text-sm">{{ request.user.username }}</p>
+                <p class="text-slate-500 text-[10px] uppercase tracking-tighter">Super Admin</p>
+            </div>
+        </div>
+    </div>
+    <nav class="flex flex-col gap-1">
+        <a href="{% url 'admin_panel' %}" class="px-6 py-3 flex items-center gap-4 bg-orange-400/10 text-orange-400 border-r-4 border-orange-400">
+            <span class="material-symbols-outlined">person_add_alt</span>
+            <span class="font-medium text-sm">Access Control</span>
+        </a>
+    </nav>
 </aside>
-<!-- Main Content Area -->
+
 <main class="flex-grow pt-24 lg:pl-64 relative overflow-hidden">
-<!-- Background Overlay -->
-<div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-<img alt="Background" class="w-full h-full object-cover" data-alt="technical wireframe blueprint of a massive aircraft turbine engine on a dark navy background with subtle orange glowing light particles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAIGZLIfb_KEC-_ZjsnT5x3PILmudVTWozSHolzVKtlcKHuDt2Lpmz2dj-CneAHzmCJXWizORvMM0Hu4Ert5GEgJqdbj_YnjvgK0WPNUA9MM4Iqq2cmepMSTiKyS5CbKKDZjN-BGlg5I8HJEj_Tgx6cElvaMwuTgWi6mEeIfaRzb5DzNvuLXh6zr2feLbtvpFbor8vy2VySmTUYlUGfhoL7CD7Kbq5CVSE4XAlf_SzomyrJArKBf6KlCS4_qoJLWX3z3llCzchQkM"/>
-</div>
-<div class="relative z-10 px-6 py-8 max-w-5xl mx-auto">
-<!-- Centered Glassmorphism Container -->
-<section class="glass-panel rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 overflow-hidden">
-<!-- Header -->
-<div class="p-8 border-b border-white/5 flex flex-col md:flex-row md:items-end justify-between gap-4">
-<div>
-<h1 class="font-headline text-3xl md:text-4xl font-bold tracking-tight text-on-surface mb-2">ACCESS CONTROL PANEL</h1>
-<div class="flex items-center gap-3">
-<span class="font-body text-slate-400 text-sm">Pending User Requests</span>
-<span class="bg-orange-400 text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full pulse-effect">{{ users|length }} PENDING</span>
-</div>
-</div>
-<div class="flex gap-3">
-<button class="flex items-center gap-2 bg-surface-container-high hover:bg-surface-bright text-on-surface px-4 py-2 rounded-md text-xs transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <img alt="Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAIGZLIfb_KEC-_ZjsnT5x3PILmudVTWozSHolzVKtlcKHuDt2Lpmz2dj-CneAHzmCJXWizORvMM0Hu4Ert5GEgJqdbj_YnjvgK0WPNUA9MM4Iqq2cmepMSTiKyS5CbKKDZjN-BGlg5I8HJEj_Tgx6cElvaMwuTgWi6mEeIfaRzb5DzNvuLXh6zr2feLbtvpFbor8vy2VySmTUYlUGfhoL7CD7Kbq5CVSE4XAlf_SzomyrJArKBf6KlCS4_qoJLWX3z3llCzchQkM"/>
+    </div>
+
+    <div class="relative z-10 px-6 py-8 max-w-5xl mx-auto">
+        <section class="glass-panel rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 overflow-hidden">
+            
+            <div class="p-8 border-b border-white/5 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h1 class="font-headline text-3xl md:text-4xl font-bold tracking-tight text-on-surface mb-2">ACCESS CONTROL PANEL</h1>
+                    <div class="flex items-center gap-3">
+                        <span class="font-body text-slate-400 text-sm">System User Overview</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-3">
+                    <div class="relative group">
+                        <button class="flex items-center gap-2 bg-surface-container-high hover:bg-surface-bright text-on-surface px-4 py-2 rounded-md text-xs transition-colors">
+                            <span class="material-symbols-outlined text-sm">filter_list</span>
                             Filter
                         </button>
-<button class="flex items-center gap-2 bg-surface-container-high hover:bg-surface-bright text-on-surface px-4 py-2 rounded-md text-xs transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
-                            Export
-                        </button>
-</div>
-</div>
-<!-- Request Cards List -->
-<div class="zebra-list">
-{% for user in users %}
+    
+                        <div class="hidden group-hover:block absolute right-0 top-full pt-2 w-40 z-50">
+                            <div class="bg-surface-container-highest border border-white/10 rounded-md shadow-xl overflow-hidden">
+                                <a href="{% url 'admin_panel' %}" class="block px-4 py-2 text-xs hover:bg-white/5 text-on-surface">All Users</a>
+                                <a href="{% url 'admin_panel' %}?filter=granted" class="block px-4 py-2 text-xs hover:bg-white/5 text-on-surface">Access Granted</a>
+                                <a href="{% url 'admin_panel' %}?filter=pending" class="block px-4 py-2 text-xs hover:bg-white/5 text-on-surface">Pending Only</a>
+                            </div>
+                        </div>
+                    </div>
 
-<div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/5 transition-all duration-300">
+                    <a href="{% url 'export_users' %}" class="flex items-center gap-2 bg-orange-400 text-black px-4 py-2 rounded-md text-xs font-bold transition-colors hover:bg-orange-300">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        Export
+                    </a>
+                </div>
+            </div>
 
-    <!-- LEFT SIDE -->
-    <div class="flex items-center gap-4">
-        <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-white/10">
-            <span class="material-symbols-outlined text-tertiary">account_circle</span>
-        </div>
+            <div class="zebra-list">
+                {% for user in users %}
+                <div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/5 transition-all">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-white/10">
+                            <span class="material-symbols-outlined text-tertiary">account_circle</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-semibold text-lg text-on-surface">{{ user.username }}</h3>
+                            <p class="text-slate-400 text-xs">{{ user.email }}</p>
+                        </div>
+                    </div>
 
-        <div>
-            <h3 class="font-headline font-semibold text-lg text-on-surface">
-                {{ user.username }}
-            </h3>
-            <p class="text-slate-400 text-xs">
-                {{ user.email }}
-            </p>
-        </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] text-slate-500 uppercase">Role</span>
+                        <span class="bg-tertiary-container text-tertiary px-3 py-1 rounded-full text-[10px] font-bold">
+                            {{ user.role|upper }}
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <span class="text-[10px] text-slate-500 uppercase">Status</span>
+                        {% if user.is_approved %}
+                            <span class="text-green-400 text-[10px] font-bold flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span> ACCESS GRANTED
+                            </span>
+                        {% else %}
+                            <span class="text-orange-400 text-[10px] font-bold pulse-effect">PENDING</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        {% if not user.is_approved %}
+                        <form method="POST" action="{% url 'approve_user' user.id %}">
+                            {% csrf_token %}
+                            <button class="border border-green-500/30 text-green-400 px-4 py-2 rounded-md text-xs font-bold hover:bg-green-500/10">APPROVE</button>
+                        </form>
+                        {% endif %}
+                        
+                        <form method="POST" action="{% url 'reject_user' user.id %}">
+                            {% csrf_token %}
+                            <button class="border border-red-500/30 text-red-400 px-4 py-2 rounded-md text-xs font-bold hover:bg-red-500/10">
+                                {% if user.is_approved %}REVOKE{% else %}REJECT{% endif %}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="p-10 text-center text-slate-500 font-headline">No users found in this category.</div>
+                {% endfor %}
+            </div>
+
+            <div class="p-6 border-t border-white/5 bg-black/20 flex items-center justify-between">
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest">Aero Maintenance System v2.1</p>
+            </div>
+        </section>
     </div>
-
-    <!-- ROLE -->
-    <div class="flex flex-col">
-        <span class="text-[10px] text-slate-500">Assigned Role</span>
-        <span class="bg-tertiary-container text-tertiary px-3 py-1 rounded-full text-[10px] font-bold">
-            {{ user.role|upper }}
-        </span>
-    </div>
-
-    <!-- STATUS -->
-    <div class="flex flex-col">
-        <span class="text-[10px] text-slate-500">Status</span>
-        <span class="text-orange-400 text-[10px] font-bold">PENDING</span>
-    </div>
-
-    <!-- BUTTONS -->
-    <div class="flex items-center gap-3">
-
-        <!-- APPROVE -->
-        <form method="POST" action="{% url 'approve_user' user.id %}">
-            {% csrf_token %}
-            <button class="flex items-center gap-2 border border-green-500/30 text-green-400 px-4 py-2 rounded-md text-xs font-bold hover:bg-green-500/10 transition-all">
-                APPROVE
-            </button>
-        </form>
-
-        <!-- REJECT -->
-        <form method="POST" action="{% url 'reject_user' user.id %}">
-            {% csrf_token %}
-            <button class="flex items-center gap-2 border border-red-500/30 text-red-400 px-4 py-2 rounded-md text-xs font-bold hover:bg-red-500/10 transition-all">
-                REJECT
-            </button>
-        </form>
-
-    </div>
-
-</div>
-
-{% endfor %}
-</div>
-<!-- Footer of the container -->
-<div class="p-6 border-t border-white/5 bg-black/20 flex items-center justify-between">
-<p class="text-[10px] text-slate-500 uppercase tracking-widest">Showing 4 of 5 active requests</p>
-<div class="flex gap-2">
-<button class="w-8 h-8 flex items-center justify-center rounded border border-white/10 text-slate-400 hover:bg-white/5"><span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span></button>
-<button class="w-8 h-8 flex items-center justify-center rounded border border-white/10 bg-orange-400/10 text-orange-400 text-xs font-bold">1</button>
-<button class="w-8 h-8 flex items-center justify-center rounded border border-white/10 text-slate-400 hover:bg-white/5"><span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span></button>
-</div>
-</div>
-</section>
-</div>
 </main>
-<!-- Global Footer -->
-<footer class="w-full py-4 bg-[#0c1324] border-t border-slate-800/20 flex justify-between items-center px-12 w-full mt-auto relative z-20">
-<p class="font-['Inter'] text-[10px] uppercase tracking-widest text-slate-500">© 2024 AERO_MAINTENANCE | CRITICAL SYSTEMS DIVISION</p>
-<div class="flex gap-8">
-<a class="font-['Inter'] text-[10px] uppercase tracking-widest text-slate-600 hover:text-slate-300 transition-colors" href="#">Security Protocol</a>
-<a class="font-['Inter'] text-[10px] uppercase tracking-widest text-slate-600 hover:text-slate-300 transition-colors" href="#">Support</a>
-<a class="font-['Inter'] text-[10px] uppercase tracking-widest text-slate-600 hover:text-slate-300 transition-colors" href="#">API Docs</a>
-</div>
+
+<footer class="w-full py-4 bg-[#0c1324] border-t border-slate-800/20 flex justify-between items-center px-12 mt-auto relative z-20">
+    <p class="text-[10px] uppercase tracking-widest text-slate-500">© 2024 AERO_MAINTENANCE | CRITICAL SYSTEMS DIVISION</p>
 </footer>
-<!-- Bottom Navigation (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#0c1324]/90 backdrop-blur-lg border-t border-slate-800/50 flex justify-around py-3 px-2 z-50">
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
-<span class="material-symbols-outlined" data-icon="aerostat">air</span>
-<span class="text-[8px] uppercase font-bold tracking-tighter">Fleet</span>
-</a>
-<a class="flex flex-col items-center gap-1 text-orange-400" href="#">
-<span class="material-symbols-outlined" data-icon="person_add_alt" style="font-variation-settings: 'FILL' 1;">person_add_alt</span>
-<span class="text-[8px] uppercase font-bold tracking-tighter">Access</span>
-</a>
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
-<span class="material-symbols-outlined" data-icon="speed">speed</span>
-<span class="text-[8px] uppercase font-bold tracking-tighter">Engine</span>
-</a>
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
-<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
-<span class="text-[8px] uppercase font-bold tracking-tighter">Logs</span>
-</a>
-</nav>
-</body></html>
+
+</body>
+</html>

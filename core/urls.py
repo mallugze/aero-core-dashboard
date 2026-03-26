@@ -16,6 +16,8 @@ urlpatterns = [
     path('request-access/', views.request_access, name='request_access'),
      # 🔥 ADD THESE
     path('admin-panel/', views.admin_panel, name='admin_panel'),
+    path('export-users/', views.export_users, name='export_users'),
     path('approve/<int:user_id>/', views.approve_user, name='approve_user'),
     path('reject/<int:user_id>/', views.reject_user, name='reject_user'),
+    path('export-pdf/', views.export_pdf, name='export_pdf'),
 ]
