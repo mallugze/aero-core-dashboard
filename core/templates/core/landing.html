@@ -124,7 +124,9 @@
 <!-- Hero Section -->
 <section class="hero">
 
-
+  <video autoplay muted loop playsinline class="landing-video">
+    <source src="{% static 'core/videos/plane.mp4' %}" type="video/mp4">
+  </video>
 
   <div class="hero-content">
     <span class="tag">NEXT-GEN ENGINE INTELLIGENCE</span>
@@ -135,11 +137,7 @@
       <span class="highlight">Fly.</span>
     </h1>
 
-    <p>
-      AERO_CORE leverages advanced LSTM neural networks to calculate
-      Remaining Useful Life (RUL) with 99.4% accuracy.
-      Transform reactive maintenance into proactive flight excellence.
-    </p>
+    
 
     <a href="{% url 'login' %}">
   <button>GET STARTED</button>
@@ -172,9 +170,7 @@
           Advanced sequence modeling to detect engine degradation patterns.
         </p>
 
-        <span class="text-sm font-semibold tracking-wide flex items-center gap-2">
-          VIEW DETAILS →
-        </span>
+        
 
       </div>
 
@@ -189,9 +185,7 @@
           Predict remaining useful life with high accuracy in real time.
         </p>
 
-        <span class="text-sm font-semibold tracking-wide flex items-center gap-2">
-          VIEW INSIGHTS →
-        </span>
+        
 
       </div>
 
@@ -232,12 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
 <a class="font-['Inter'] text-[10px] uppercase tracking-widest text-slate-500 hover:text-[#ffb874] transition-colors" href="#">Support</a>
 </div>
 <div class="flex gap-4">
-<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-slate-400 hover:text-primary transition-colors cursor-pointer border border-outline-variant/10">
-<span class="material-symbols-outlined text-sm" data-icon="language">language</span>
-</div>
-<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-slate-400 hover:text-primary transition-colors cursor-pointer border border-outline-variant/10">
-<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
-</div>
+
+
 </div>
 </div>
 </footer>
