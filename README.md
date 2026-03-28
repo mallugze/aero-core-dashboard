@@ -23,9 +23,7 @@
 ### 🌍 Fleet / Telemetry Overview
 ![Fleet Overview](images/fleet.png)
 
-![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+UI)
-![Health Page](https://via.placeholder.com/800x400?text=Health+Monitoring)
-![PDF Report](https://via.placeholder.com/800x400?text=PDF+Report)
+
 
 ---
 
@@ -69,7 +67,7 @@ It enables engineers to upload engine telemetry data and receive predictive diag
 
 ## 🏗️ Architecture
 
-![Architecture](https://via.placeholder.com/900x500?text=AeroCore+Architecture+Diagram)
+![Architecture](images\architecture.png)
 
 ---
 
