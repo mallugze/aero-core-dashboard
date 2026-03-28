@@ -138,5 +138,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mallikarjunpx@gmail.com'
-EMAIL_HOST_PASSWORD = 'mbbo unck qlaj jodh' # Generate a "App Password" in Google settings
+EMAIL_HOST_PASSWORD = '' # Generate a "App Password" in Google settings
 DEFAULT_FROM_EMAIL = 'AERO_CORE System <mallikarjunpx@gmail.com>'

@@ -114,9 +114,10 @@ input:focus, select:focus {
         <span class="material-symbols-outlined text-primary text-5xl mb-4 animate-bounce">check_circle</span>
         <h3 class="font-headline text-xl font-bold text-white uppercase tracking-tighter mb-2">Request Transmitted</h3>
         <p class="text-slate-400 text-xs leading-relaxed mb-6">Your credentials are now in the queue for Admin validation. System response expected within 2-4 hours.</p>
-        <button onclick="window.location.href='{% url 'login' %}'" class="w-full bg-primary text-black font-bold py-2 rounded uppercase text-[10px] tracking-widest hover:bg-white transition-colors">
-            Return to Terminal
-        </button>
+        <button onclick="window.location.href='{% url 'login' %}'" 
+        class="w-full bg-primary text-black font-bold py-2 rounded uppercase text-[10px] tracking-widest hover:bg-white transition-colors">
+    Return to Terminal
+</button>
     </div>
 </div>
 <div class="glass-panel rounded-xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
