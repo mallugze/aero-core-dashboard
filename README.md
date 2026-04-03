@@ -65,9 +65,7 @@ It enables engineers to upload engine telemetry data and receive predictive diag
 
 ---
 
-## 🏗️ Architecture
 
-![Architecture](images\architecture.png)
 
 ---
 
