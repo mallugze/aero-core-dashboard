@@ -110,7 +110,7 @@ It enables engineers to upload engine telemetry data and receive predictive diag
 
 ## 👨‍💻 Author
 
-Developed by **[Your Name]**
+Developed by **[Mallikarjun]**
 
 ---
 
