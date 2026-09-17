@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html class="dark" lang="en"><head>
@@ -92,8 +93,34 @@
   </style>
   </head>
 <body class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary">
+    <div style="position: fixed; inset: 0; width: 100%; height: 100%; z-index: -50; overflow: hidden; background: #0c1324;">
+    <img src="{% static 'core/images/dashboardbg.jpg' %}" 
+         style="width: 100%; height: 100%; object-fit: cover; animation: bgZoom 20s infinite ease-in-out;" 
+         alt="Background">
+    <div style="position: absolute; inset: 0; background: rgba(12, 19, 31, 0.6); backdrop-filter: blur(2px);"></div>
+</div>
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-[#0c1324]/80 backdrop-blur-xl flex justify-between items-center px-8 h-20 shadow-[0_40px_40px_-15px_rgba(12,13,36,0.08)]">
+    <style>
+    @keyframes bgZoom {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    /* This forces the body to be transparent so the image shows through */
+    body {
+        background-color: transparent !important;
+    }
+    
+    /* Apply glass effect to cards */
+    .glass-card {
+        background: rgba(25, 31, 49, 0.4) !important;
+        backdrop-filter: blur(12px) saturate(150%);
+        -webkit-backdrop-filter: blur(12px) saturate(150%);
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+</style>
     
     <div class="flex items-center gap-4">
         <button onclick="toggleNav()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/10 text-primary transition-colors">
@@ -102,7 +129,7 @@
 
         <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-[#ffb874] text-3xl">flight_takeoff</span>
-            <span class="text-2xl font-black tracking-tighter text-[#ffb874] uppercase font-headline">AERO_CORE</span>
+            <span class="text-2xl font-black tracking-tighter text-[#ffb874] uppercase font-headline">AERO CORE</span>
         </div>
     </div>
 
@@ -309,20 +336,19 @@
 </div>
 </aside>
 <!-- Footer -->
-<footer class="w-full py-12 border-t border-[#45464d]/15 bg-[#0c1324] mt-20">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-12 gap-8">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[#ffb874]" data-icon="flight_takeoff">flight_takeoff</span>
-<p class="font-['Inter'] text-[10px] uppercase tracking-widest text-slate-500">© 2024 AERO_CORE PREDICTIVE SYSTEMS. ALL RIGHTS RESERVED.</p>
+<footer class="relative z-50 w-full py-8 border-t border-white/5 bg-[#0c1324]/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-12 gap-8">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">flight_takeoff</span>
+                <p class="text-[10px] uppercase tracking-widest text-slate-500">© 2026 AERO CORE PREDICTIVE SYSTEMS. ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="flex gap-8">
+                <a class="text-slate-500 hover:text-primary transition-colors text-[10px] uppercase tracking-widest" href="#">Privacy Policy</a>
+                <a class="text-slate-500 hover:text-primary transition-colors text-[10px] uppercase tracking-widest" href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 </div>
-<div class="flex gap-8">
-<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Privacy Policy</a>
-<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Terms of Service</a>
-<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Documentation</a>
-<a class="text-slate-500 hover:text-[#ffb874] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">Support</a>
-</div>
-</div>
-</footer>
 <!-- Mobile Navigation Shell -->
 <nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0c1324]/90 backdrop-blur-xl border-t border-outline-variant/10 flex justify-around items-center z-50">
 <a class="flex flex-col items-center gap-1 text-slate-500" href="#">

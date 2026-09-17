@@ -12,13 +12,9 @@ from django.http import HttpResponse
 # PDF Generation Imports
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
-from reportlab.lib.utils import ImageReader
 
 from .utils import predict
 from predictor.models import CustomUser
-
-# GLOBAL VARIABLE (temporary storage for ML results)
-latest_data = {}
 
 # =========================
 # 🔐 LOGIN VIEW
@@ -52,8 +48,9 @@ def login_view(request):
 # 🚪 LOGOUT
 # =========================
 def logout_view(request):
-    global latest_data
-    latest_data = {}  # Clears results from memory on logout
+    # Clears session data on logout
+    if 'engine_data' in request.session:
+        del request.session['engine_data']
     logout(request)
     return redirect('login')
 
@@ -73,13 +70,11 @@ def request_access(request):
         role = request.POST.get('role')
         password = request.POST.get('password')
 
-        # 1. Validation: Check if username exists
         if CustomUser.objects.filter(username=name).exists():
             messages.error(request, f"The name '{name}' is already registered.")
             return render(request, 'core/request.html')
 
         try:
-            # 2. Create User
             CustomUser.objects.create_user(
                 username=name,
                 email=email,
@@ -88,7 +83,6 @@ def request_access(request):
                 is_approved=False
             )
 
-            # 3. Admin Notification
             try:
                 send_mail(
                     subject=f"🚀 NEW ACCESS REQUEST: {name}",
@@ -100,7 +94,6 @@ def request_access(request):
             except:
                 pass 
 
-            # 4. Stay on page so JavaScript Success Popup triggers
             messages.success(request, "Request submitted successfully.")
             return render(request, 'core/request.html')
 
@@ -115,14 +108,16 @@ def request_access(request):
 # =========================
 @login_required
 def dashboard(request):
-    global latest_data
-    display_data = {} 
+    # Retrieve existing data from session if it exists
+    display_data = request.session.get('engine_data', {}) 
 
     if request.method == "POST":
         file = request.FILES.get('file')
         if file:
             result = predict(file)
-            latest_data = {
+            
+            # Prepare the result dictionary
+            engine_results = {
                 "cycles": result,
                 "health": "Good" if result > 100 else "Warning" if result > 50 else "Critical",
                 "vibration": round(0.2 + (150 - result) * 0.002, 2),
@@ -130,14 +125,17 @@ def dashboard(request):
                 "fuel_flow": 8000 + (result * 10),
             }
             
-            if latest_data["health"] == "Good":
-                latest_data["color"] = "#4ade80"
-            elif latest_data["health"] == "Warning":
-                latest_data["color"] = "#facc15"
+            # Assign color based on health
+            if engine_results["health"] == "Good":
+                engine_results["color"] = "#4ade80"
+            elif engine_results["health"] == "Warning":
+                engine_results["color"] = "#facc15"
             else:
-                latest_data["color"] = "#ef4444"
+                engine_results["color"] = "#ef4444"
             
-            display_data = latest_data
+            # Store in session so it survives page navigation
+            request.session['engine_data'] = engine_results
+            display_data = engine_results
     
     return render(request, "core/dashboard.html", display_data)
 
@@ -146,22 +144,30 @@ def dashboard(request):
 # =========================
 @login_required
 def fleet(request):
-    return render(request, "core/fleet.html", latest_data)
+    data = request.session.get('engine_data', {})
+    return render(request, "core/fleet.html", data)
 
 @login_required
 def maintenance(request):
-    return render(request, "core/maintenance.html", latest_data)
+    data = request.session.get('engine_data', {})
+    return render(request, "core/maintenance.html", data)
 
 @login_required
 def health(request):
-    return render(request, "core/health.html", latest_data)
+    data = request.session.get('engine_data', {})
+    return render(request, "core/health.html", data)
 
 # =========================
 # 📥 EXPORT PDF REPORT
 # =========================
 @login_required
 def export_pdf(request):
-    global latest_data
+    # Fetch data from session
+    data = request.session.get('engine_data', {})
+    
+    if not data:
+        return HttpResponse("No engine telemetry data found to export.", status=400)
+
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="AeroCore_Report.pdf"'
 
@@ -187,11 +193,11 @@ def export_pdf(request):
     y_position = 670
     
     data_points = [
-        f"• Remaining Useful Life: {latest_data.get('cycles', '--')} CYCLES",
-        f"• System Health Status: {latest_data.get('health', 'No Data')}",
-        f"• Core Vibration: {latest_data.get('vibration', '--')} ips",
-        f"• Oil Pressure: {latest_data.get('pressure', '--')} psi",
-        f"• Fuel Flow: {latest_data.get('fuel_flow', '--')} pph"
+        f"• Remaining Useful Life: {data.get('cycles', '--')} CYCLES",
+        f"• System Health Status: {data.get('health', 'No Data')}",
+        f"• Core Vibration: {data.get('vibration', '--')} ips",
+        f"• Oil Pressure: {data.get('pressure', '--')} psi",
+        f"• Fuel Flow: {data.get('fuel_flow', '--')} pph"
     ]
 
     for line in data_points:
@@ -233,24 +239,34 @@ def approve_user(request, user_id):
     user.is_approved = True
     user.save()
 
-    # 📧 THIS IS THE PART TO CHANGE
+    # Define the professional message
+    login_url = request.build_absolute_uri('/') # Points to your login page
+    
+    subject = "Access Granted: AERO_CORE System"
+    message = (
+        f"Hello {user.username},\n\n"
+        f"Your request for access to the AERO_CORE Predictive Intelligence platform for your "
+        f"{user.email} account has been approved.\n\n"
+        f"Follow this link to log in and access your diagnostic dashboard:\n"
+        f"{login_url}\n\n"
+        f"If you did not request this access or believe this is an error, please contact "
+        f"system security immediately.\n\n"
+        f"Thanks,\n"
+        f"The AERO_CORE Team"
+    )
+
     try:
         send_mail(
-            subject="✅ ACCESS GRANTED: AERO_CORE SYSTEM",
-            message=(
-                f"Greetings {user.username},\n\n"
-                f"Your request for access to the AERO_CORE system has been approved.\n\n"
-                f"You may now log in to your dashboard.\n\n"
-                f"Welcome aboard."
-            ),
+            subject=subject,
+            message=message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[user.email],
-            fail_silently=False, # Set to False during testing to see errors
+            fail_silently=False, 
         )
     except Exception as e:
         print(f"Email Error: {e}")
 
-    messages.success(request, f"{user.username} approved and notified via email.")
+    messages.success(request, f"Access for {user.username} has been provisioned.")
     return redirect('admin_panel')
 
 @require_POST

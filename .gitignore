@@ -1,6 +1,9 @@
 venv/
+tfenv/
 __pycache__/
 *.pyc
+*.pyo
 db.sqlite3
-*.pkl
-*.h5
+.env
+staticfiles/
+.DS_Store

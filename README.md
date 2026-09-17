@@ -106,6 +106,29 @@ It enables engineers to upload engine telemetry data and receive predictive diag
 * Real-time streaming (IoT)
 * Cloud deployment
 
+## 🐳 Docker Deployment
+
+Run the entire application in a container with a single command:
+
+### 1. Using Docker Compose (Recommended)
+```bash
+# 1. Copy the environment template
+cp .env.example .env
+
+# 2. Build and launch the container
+docker compose up --build
+```
+Access the application dashboard at `http://localhost:8000`.
+
+### 2. Using Docker CLI
+```bash
+# Build the Docker image
+docker build -t aerocore:latest .
+
+# Run the container
+docker run -p 8000:8000 --env-file .env.example aerocore:latest
+```
+
 ---
 
 ## 👨‍💻 Author

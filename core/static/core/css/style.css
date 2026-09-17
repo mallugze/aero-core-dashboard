@@ -232,6 +232,8 @@ a:hover {
 html, body {
   height: 100%;
   margin: 0;
+  background-color: #0c1324 !important; /* <--- ADD THIS LINE */
+  color: white;
 }
 .login-video {
   position: fixed;
@@ -251,3 +253,23 @@ html, body {
   background: rgba(12, 19, 36, 0.85) !important; /* Darker card background, but clear video */
   backdrop-filter: blur(20px);
 }
+<style>
+    /* 1. Define the movement */
+    @keyframes bgZoom {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); } /* Zooms in 15% */
+        100% { transform: scale(1); }
+    }
+
+    /* 2. Apply it to the class */
+    .animate-bg-zoom {
+        animation: bgZoom 20s infinite ease-in-out !important;
+        transform-origin: center;
+        will-change: transform; /* Helps browser performance */
+    }
+
+    /* 3. Ensure body doesn't block the view */
+    body {
+        background: transparent !important;
+    }
+</style>
